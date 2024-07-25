@@ -75,9 +75,9 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉` })
             ]})
         )}
     </div>
-    <div class="card" style="padding: 0;">
+</div>
+<div class="card" style="padding: 0;">
         ${Inputs.table(raw_data)}
-    </div>
 </div>
 
 
