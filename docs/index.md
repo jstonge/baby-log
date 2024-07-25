@@ -5,6 +5,10 @@ sql:
     data: ./data/Baby Journey.csv
 ---
 
+```sql
+SELECT * FROM data
+```
+<!-- 
 <h1>Hello, Breastfeeding</h1>
 
 ```js
@@ -35,7 +39,7 @@ const range = Generators.input(rangeInput);
 const bf = [...breastfeed_ts].filter(d=>d.Activities==='Allaitement' && d.DaysSinceBirth === range)
 ```
 ```js
-const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉` })
+const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
 ```
 
 <div class="grid grid-cols-1">
@@ -82,10 +86,7 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉` })
 </div>
 
 
-<!-- APPENDIX -->
-
 ```js
-// const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
 ```
 
@@ -118,4 +119,4 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 SELECT * FROM data 
 ```
 
-
+ -->
