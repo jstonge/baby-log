@@ -1,8 +1,9 @@
 ---
 theme: dashboard
 toc: false
+sql:
+    data: ./data/Baby Journey.csv
 ---
-
 
 <h1>Hello, Breastfeeding</h1>
 
@@ -84,12 +85,11 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉` })
 <!-- APPENDIX -->
 
 ```js
-const db = DuckDBClient.of({data: FileAttachment("./data/Baby Journey.csv")});
+// const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
 ```
 
-```js
-const breastfeed_ts = db.sql`
+```sql id=breastfeed_ts
 SELECT 
     Time1 as start, 
     Time2 as end,
@@ -98,21 +98,24 @@ SELECT
     DaysSinceBirth
 FROM data 
 WHERE (Activities = 'Allaitement' OR Activities = 'Lait exprimé')
-`
 ```
 
-```js
-const other_activities = db.sql`
+```sql id=other_activities
 SELECT Time1 as start, Time2 as end, Activities, DaysSinceBirth
 FROM data 
 WHERE Activities != 'Allaitement'
-`
 ```
 
-```js
-const count_pipi = db.sql`SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities`
-const days = db.sql`SELECT MAX(DaysSinceBirth) as Days FROM data`
-const raw_data = db.sql`SELECT * FROM data `
+```sql id=count_pipi 
+SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
+```
+
+```sql id=days 
+SELECT MAX(DaysSinceBirth) as Days FROM data
+```
+
+```sql id=raw_data
+SELECT * FROM data 
 ```
 
 
