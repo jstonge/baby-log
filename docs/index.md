@@ -5,10 +5,8 @@ sql:
     data: ./data/Baby Journey.csv
 ---
 
-```sql
-SELECT * FROM data
-```
-<!-- 
+
+
 <h1>Hello, Breastfeeding</h1>
 
 ```js
@@ -56,6 +54,7 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
         Plot.lineY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", stroke: "lightgrey", 
             })),
+        Plot.lineX(intervals),
         Plot.dotY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
             })),
@@ -69,14 +68,12 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
     )}
     ${resize((width) => Plot.plot({ 
             width,
-            x: { transform: (x) => formatTime(x), label: null  },
+            x: { transform: (x) => formatTime(x), label: null, fontSize: 0, tickSize: 0  },
             nice:true,
             marginLeft: 40,
             marks: [
                 Plot.frame(),
-                Plot.barX(bf, {
-                    x1: "start", x2: "end"
-                })
+                Plot.barX(bf, { x1: "start", x2: "end" })
             ]})
         )}
     </div>
@@ -118,5 +115,3 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 ```sql id=raw_data
 SELECT * FROM data 
 ```
-
- -->
