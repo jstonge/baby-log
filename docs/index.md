@@ -54,7 +54,6 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
         Plot.lineY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", stroke: "lightgrey", 
             })),
-        Plot.lineX(intervals),
         Plot.dotY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
             })),
