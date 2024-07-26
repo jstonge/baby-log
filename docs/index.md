@@ -10,7 +10,10 @@ sql:
 <h1>Hello, Breastfeeding</h1>
 
 ```js
-const rangeInput = Inputs.range(d3.extent([...raw_data].map((d) => d.DaysSinceBirth)), {label: "Day:", step: 1, value: [...days][0]['Days']});
+const minmax_days = d3.extent([...raw_data].map((d) => d.DaysSinceBirth))
+```
+```js
+const rangeInput = Inputs.range(minmax_days, {label: "Day:", step: 1, value: [...days][0]['Days']});
 const range = Generators.input(rangeInput);
 ```
 
@@ -82,7 +85,6 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
 <div class="card" style="padding: 0;">
         ${Inputs.table(raw_data)}
 </div>
-
 
 ```js
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
