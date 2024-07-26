@@ -2,7 +2,7 @@
 theme: dashboard
 toc: false
 sql:
-    data: baby.csv
+    data: baby.parquet
 ---
 
 
