@@ -82,7 +82,7 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
 </div>
 <div class="card" style="padding: 0;">
         ${Inputs.table(raw_data)}
-</div> -->
+</div>
 
 
 ```js
@@ -120,4 +120,4 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 
 ```sql id=raw_data
 SELECT * FROM data 
-```
+``` -->
