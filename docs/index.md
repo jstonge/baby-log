@@ -2,9 +2,8 @@
 theme: dashboard
 toc: false
 sql:
-    data: baby.parquet
+    data: Baby Journey.csv
 ---
-
 
 
 <h1>Hello, Breastfeeding</h1>
