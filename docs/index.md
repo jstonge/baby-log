@@ -5,12 +5,15 @@ sql:
     data: ./data/Baby Journey.csv
 ---
 
+```sql
+SELECT * FROM data
+```
 
 
-<h1>Hello, Breastfeeding</h1>
+<!-- <h1>Hello, Breastfeeding</h1>
 
 ```js
-const rangeInput = Inputs.range(d3.extent([...raw_data].map((d) => d.DaysSinceBirth)), {label: "Day:", step: 1});
+const rangeInput = Inputs.range(d3.extent([...raw_data].map((d) => d.DaysSinceBirth)), {label: "Day:", step: 1, value: [...days][0]['Days']});
 const range = Generators.input(rangeInput);
 ```
 
@@ -113,4 +116,4 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 
 ```sql id=raw_data
 SELECT * FROM data 
-```
+``` -->
