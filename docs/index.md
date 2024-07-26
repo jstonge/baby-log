@@ -42,6 +42,15 @@ const bf = [...breastfeed_ts].filter(d=>d.Activities==='Allaitement' && d.DaysSi
 const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
 ```
 
+```js
+const min_Date = d3.min(bf.map(d=>d.start))
+```
+
+```js
+const guideline = generateGuideline(min_Date, 3, 30, 9);
+```
+
+
 <div class="grid grid-cols-1">
   <div class="card">
     ${rangeInput}
@@ -59,6 +68,9 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
             })),
         Plot.dotY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
+            })),
+        Plot.lineY(guideline, Plot.mapY("cumsum", {
+            x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
             })),
         Plot.textX([...other_activities].filter(d=>d.DaysSinceBirth === range), {
             fontSize: 20,
@@ -116,4 +128,30 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 
 ```sql id=raw_data
 SELECT * FROM data 
+```
+
+```js
+function generateGuideline(dateInput, intervalHours, duration, count) {
+    const guideline = [];
+    
+    // Round the input date to the start of the day
+    const startDate = new Date(dateInput);
+    startDate.setHours(0, 0, 0, 0);
+
+    const dateFormat = "%Y-%m-%d %H:%M";
+    const formatDate = d3.timeFormat(dateFormat);
+
+    let currentDate = startDate;
+
+    for (let i = 0; i < count; i++) {
+        guideline.push({
+            start: formatDate(currentDate),
+            Duration: i === 0 ? 0 : duration
+        });
+
+        currentDate.setHours(currentDate.getHours() + intervalHours);
+    }
+
+    return guideline;
+}
 ```
