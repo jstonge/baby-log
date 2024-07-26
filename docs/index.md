@@ -2,15 +2,12 @@
 theme: dashboard
 toc: false
 sql:
-    data: ./data/Baby Journey.csv
+    data: baby.csv
 ---
 
-```sql
-SELECT * FROM data
-```
 
 
-<!-- <h1>Hello, Breastfeeding</h1>
+<h1>Hello, Breastfeeding</h1>
 
 ```js
 const rangeInput = Inputs.range(d3.extent([...raw_data].map((d) => d.DaysSinceBirth)), {label: "Day:", step: 1, value: [...days][0]['Days']});
@@ -54,6 +51,7 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
     y: { label: "Temps Cumulatif Allaitement (minutes)"  },
     color: {legend: true},
     marks: [
+        Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
         Plot.lineY(bf, Plot.mapY("cumsum", {
             x: "start", y: "Duration", stroke: "lightgrey", 
             })),
@@ -64,13 +62,14 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
             fontSize: 20,
             text: (d) => `${emoji[d.Activities]} `,
             x: "start",
-            y: 5
+            y: 0,
+            dy: 15
         }),
         ]})
     )}
     ${resize((width) => Plot.plot({ 
             width,
-            x: { transform: (x) => formatTime(x), label: null, fontSize: 0, tickSize: 0  },
+            x: { transform: (x) => formatTime(x) },
             nice:true,
             marginLeft: 40,
             marks: [
@@ -100,10 +99,6 @@ FROM data
 WHERE Activities = 'Allaitement'
 ```
 
-```js
-[...breastfeed_ts]
-```
-
 ```sql id=other_activities
 SELECT Time1 as start, Time2 as end, Activities, DaysSinceBirth
 FROM data 
@@ -120,4 +115,4 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 
 ```sql id=raw_data
 SELECT * FROM data 
-``` -->
+```
