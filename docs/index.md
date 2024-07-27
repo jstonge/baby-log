@@ -52,7 +52,7 @@ const minmax_Date = d3.extent(bf.map(d=>d.start))
 ```
 
 ```js
-const guideline = generateGuideline(startEnd[0], startEnd[1], 3, 30);
+const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']);
 ```
 
 <div class="grid grid-cols-1">
@@ -84,12 +84,14 @@ const guideline = generateGuideline(startEnd[0], startEnd[1], 3, 30);
         y: { label: "Temps Cumulatif Allaitement (minutes)"  },
         color: {legend: true},
         marks: [
-            Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
             Plot.lineY(bf, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "lightgrey", 
                 })),
             Plot.dotY(bf, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
+                })),
+            Plot.lineY(guideline, Plot.mapY("cumsum", {
+                x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
             Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
                 fontSize: 20,
@@ -116,6 +118,7 @@ const guideline = generateGuideline(startEnd[0], startEnd[1], 3, 30);
     ${Inputs.table(raw_data)}
 </div>
 
+<!-- Plot.axisX({label: null, fontSize: 0, tickSize: 0}), -->
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
@@ -156,35 +159,31 @@ SELECT * FROM data
 ```
 
 ```js
-function generateGuideline(lowerDateInput, upperDateInput, intervalHours, duration) {
+function generateGuideline(lowerDateInput, upperDateInput) {
     const guideline = [];
     
-    // Round the lower date to the start of the day
-    const lowerDate = new Date(lowerDateInput);
-
-    // Create the upper date object
-    const upperDate = new Date(upperDateInput);
-
-    const dateFormat = "%Y-%m-%d %H:%M";
-    const formatDate = d3.timeFormat(dateFormat);
-
+    const lowerDate = lowerDateInput;
+    const formatDate = d3.timeFormat("%Y-%m-%d %H:%M");
     let currentDate = new Date(lowerDate);
+
     let isStart = true;
 
-    while (currentDate <= upperDate) {
+    while (currentDate <= formatTime(upperDateInput)) {
         guideline.push({
-            start: formatDate(currentDate),
-            Duration: isStart ? 0 : duration
+            start: isStart ? lowerDateInput : formatDate(currentDate),
+            Duration: isStart ? 0 : 30
         });
+        
 
-        currentDate.setHours(currentDate.getHours() + intervalHours);
+        currentDate.setHours(currentDate.getHours() + 3);
         isStart = false;
     }
+    
+    guideline.push({ start: formatDate(currentDate), Duration: 30 });
+    
+    currentDate.setHours(currentDate.getHours()+3);
+    guideline.push({ start: formatDate(currentDate), Duration: 30 });
 
     return guideline;
 }
-```
-
-```js
-guideline
 ```
