@@ -8,12 +8,13 @@ sql:
 
 <h1>Hello, Breastfeeding</h1>
 
-```js
-const minmax_days = d3.extent([...raw_data].map((d) => d.DaysSinceBirth))
+
+```sql id=days 
+SELECT MAX(DaysSinceBirth) as Days FROM data
 ```
-```js
-const rangeInput = Inputs.range(minmax_days, {label: "Day:", step: 1, value: [...days][0]['Days']});
-const range = Generators.input(rangeInput);
+
+```sql id=count_pipi 
+SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 ```
 
 <div class="grid grid-cols-4">
@@ -36,50 +37,68 @@ const range = Generators.input(rangeInput);
 </div>
 
 ```js
-const bf = [...breastfeed_ts].filter(d=>d.Activities==='Allaitement' && d.DaysSinceBirth === range)
+const bf = [...breastfeed_ts].filter(d => 
+    d.Activities==='Allaitement' && 
+    formatTime(d.start) > startEnd[0] && formatTime(d.start) < startEnd[1]
+)
 ```
+
 ```js
 const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
 ```
 
 ```js
-const min_Date = d3.min(bf.map(d=>d.start))
+const minmax_Date = d3.extent(bf.map(d=>d.start))
 ```
 
 ```js
-const guideline = generateGuideline(min_Date, 3, 30, 9);
+const guideline = generateGuideline(startEnd[0], startEnd[1], 3, 30);
 ```
-
 
 <div class="grid grid-cols-1">
   <div class="card">
-    ${rangeInput}
+    <h3>Brush to filter</h3>
+    ${resize((width => Plot.plot({
+        width,
+        x: { transform: (x) => formatTime(x), label: "Date"  },
+        marks: [
+            Plot.frame(),
+            Plot.tickX(raw_data, {x: "Time1"}),
+            (index, scales, channels, dimensions, context) => {
+            const x1 = dimensions.marginLeft;
+            const x2 = dimensions.width - dimensions.marginRight;
+            const y1 = 0;
+            const y2 = dimensions.height;
+            const brushed = (event) => setStartEnd(event.selection?.map(scales.x.invert));
+            const brush = d3.brushX().extent([[x1, y1], [x2, y2]]).on("brush end", brushed);
+            return d3.create("svg:g").call(brush).node();
+            }
+    ]
+    })))}
+    <br>
     ${resize((width) => Plot.plot({ 
-    width,
-    grid: true,
-    nice:true,
-    x: { transform: (x) => formatTime(x), label: "Date"  },
-    y: { label: "Temps Cumulatif Allaitement (minutes)"  },
-    color: {legend: true},
-    marks: [
-        Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
-        Plot.lineY(bf, Plot.mapY("cumsum", {
-            x: "start", y: "Duration", stroke: "lightgrey", 
-            })),
-        Plot.dotY(bf, Plot.mapY("cumsum", {
-            x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
-            })),
-        Plot.lineY(guideline, Plot.mapY("cumsum", {
-            x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
-            })),
-        Plot.textX([...other_activities].filter(d=>d.DaysSinceBirth === range), {
-            fontSize: 20,
-            text: (d) => `${emoji[d.Activities]} `,
-            x: "start",
-            y: 0,
-            dy: 15
-        }),
-        ]})
+        width,
+        grid: true,
+        nice:true,
+        x: { transform: (x) => formatTime(x), label: "Date"  },
+        y: { label: "Temps Cumulatif Allaitement (minutes)"  },
+        color: {legend: true},
+        marks: [
+            Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
+            Plot.lineY(bf, Plot.mapY("cumsum", {
+                x: "start", y: "Duration", stroke: "lightgrey", 
+                })),
+            Plot.dotY(bf, Plot.mapY("cumsum", {
+                x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
+                })),
+            Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
+                fontSize: 20,
+                text: (d) => `${emoji[d.Activities]} `,
+                x: "start",
+                y: 0,
+                dy: 15
+            })
+            ]})
     )}
     ${resize((width) => Plot.plot({ 
             width,
@@ -94,8 +113,21 @@ const guideline = generateGuideline(min_Date, 3, 30, 9);
     </div>
 </div>
 <div class="card" style="padding: 0;">
-        ${Inputs.table(raw_data)}
+    ${Inputs.table(raw_data)}
 </div>
+
+
+```js
+const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
+```
+```js
+const one_day_before_max = new Date(maxDate.getTime() - 86400*1000)
+```
+
+```js
+const startEnd = Mutable([one_day_before_max, maxDate]);
+const setStartEnd = (se) => startEnd.value = se;
+```
 
 ```js
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
@@ -112,46 +144,47 @@ FROM data
 WHERE Activities = 'Allaitement'
 ```
 
-```sql id=other_activities
+```sql id=[...other_activities]
 SELECT Time1 as start, Time2 as end, Activities, DaysSinceBirth
 FROM data 
 WHERE Activities != 'Allaitement'
 ```
 
-```sql id=count_pipi 
-SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
-```
 
-```sql id=days 
-SELECT MAX(DaysSinceBirth) as Days FROM data
-```
-
-```sql id=raw_data
+```sql id=[...raw_data]
 SELECT * FROM data 
 ```
 
 ```js
-function generateGuideline(dateInput, intervalHours, duration, count) {
+function generateGuideline(lowerDateInput, upperDateInput, intervalHours, duration) {
     const guideline = [];
     
-    // Round the input date to the start of the day
-    const startDate = new Date(dateInput);
-    startDate.setHours(0, 0, 0, 0);
+    // Round the lower date to the start of the day
+    const lowerDate = new Date(lowerDateInput);
+
+    // Create the upper date object
+    const upperDate = new Date(upperDateInput);
 
     const dateFormat = "%Y-%m-%d %H:%M";
     const formatDate = d3.timeFormat(dateFormat);
 
-    let currentDate = startDate;
+    let currentDate = new Date(lowerDate);
+    let isStart = true;
 
-    for (let i = 0; i < count; i++) {
+    while (currentDate <= upperDate) {
         guideline.push({
             start: formatDate(currentDate),
-            Duration: i === 0 ? 0 : duration
+            Duration: isStart ? 0 : duration
         });
 
         currentDate.setHours(currentDate.getHours() + intervalHours);
+        isStart = false;
     }
 
     return guideline;
 }
+```
+
+```js
+guideline
 ```
