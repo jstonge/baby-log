@@ -8,8 +8,11 @@ sql:
 
 <h1>Hello, Breastfeeding</h1>
 
+```sql
+SELECT * FROM data
+```
 
-```sql id=days 
+<!-- ```sql id=days 
 SELECT MAX(DaysSinceBirth) as Days FROM data
 ```
 
@@ -37,18 +40,13 @@ SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 </div>
 
 ```js
-const bf = [...breastfeed_ts].filter(d => 
-    d.Activities==='Allaitement' && 
+const bf = breastfeed_ts.filter(d => 
     formatTime(d.start) > startEnd[0] && formatTime(d.start) < startEnd[1]
 )
 ```
 
 ```js
 const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
-```
-
-```js
-const minmax_Date = d3.extent(bf.map(d=>d.start))
 ```
 
 ```js
@@ -115,19 +113,28 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
     </div>
 </div>
 <div class="card" style="padding: 0;">
-    ${Inputs.table(raw_data)}
+    ${Inputs.table(bf)}
 </div>
 
-<!-- Plot.axisX({label: null, fontSize: 0, tickSize: 0}), -->
+<br><br>
+
+```js
+Plot.plot({
+    x: {type: "utc"},
+    height:100,
+    marks: [
+        Plot.frame(),
+        Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.2})
+    ]
+})
+```
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
 ```
-```js
-const one_day_before_max = new Date(maxDate.getTime() - 86400*1000)
-```
 
 ```js
+const one_day_before_max = new Date(maxDate.getTime() - 86400*1000)
 const startEnd = Mutable([one_day_before_max, maxDate]);
 const setStartEnd = (se) => startEnd.value = se;
 ```
@@ -136,7 +143,9 @@ const setStartEnd = (se) => startEnd.value = se;
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
 ```
 
-```sql id=breastfeed_ts
+
+
+```sql id=[...breastfeed_ts]
 SELECT 
     Time1 as start, 
     Time2 as end,
@@ -153,10 +162,11 @@ FROM data
 WHERE Activities != 'Allaitement'
 ```
 
-
 ```sql id=[...raw_data]
 SELECT * FROM data 
 ```
+
+
 
 ```js
 function generateGuideline(lowerDateInput, upperDateInput) {
@@ -186,4 +196,19 @@ function generateGuideline(lowerDateInput, upperDateInput) {
 
     return guideline;
 }
-```
+
+function extractTime(date) {
+    // Create a new Date object set to the epoch (January 1, 1970)
+    const newDate = new Date(0);
+    
+    // Extract hours, minutes, and seconds from the input date
+    const hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+    
+    // Set the time on the new Date object
+    newDate.setUTCHours(hours, minutes, 0);
+
+    return newDate;
+}
+
+``` -->
