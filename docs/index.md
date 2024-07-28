@@ -1,15 +1,21 @@
 ---
 theme: dashboard
 toc: false
-sql:
-    data: Baby Journey.csv
 ---
 
 
 <h1>Hello, Breastfeeding</h1>
 
-```sql
-SELECT * FROM data
+```js
+const db = DuckDBClient.of({data: FileAttachment("./Baby Journey.csv")});
+```
+
+```js
+const bs = db.query("SELECT * FROM data")
+```
+
+```js
+Inputs.table(bs)
 ```
 
 <!-- ```sql id=days 
