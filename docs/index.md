@@ -7,6 +7,13 @@ toc: false
 <h1>Hello, Breastfeeding</h1>
 
 ```js
+const data = FileAttachment("baby.csv")
+```
+```js
+Inputs.table(data.csv())
+```
+
+<!-- ```js
 const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
 ```
 
@@ -16,7 +23,7 @@ const bs = db.query("SELECT * FROM data")
 
 ```js
 Inputs.table(bs)
-```
+``` -->
 
 
 <!-- ```sql id=days 
