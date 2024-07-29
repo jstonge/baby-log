@@ -12,7 +12,7 @@ const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
 ```
 
 ```js
-const bs = db.query("SELECT Time1 FROM data")
+const bs = db.query("SELECT Time1 FROM data.column0")
 ```
 
 ```js
