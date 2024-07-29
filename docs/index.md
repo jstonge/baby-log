@@ -7,7 +7,7 @@ toc: false
 <h1>Hello, Breastfeeding</h1>
 
 ```js
-const db = DuckDBClient.of({data: FileAttachment("./Baby Journey.csv")});
+const db = DuckDBClient.of({data: FileAttachment("./data/baby.csv")});
 ```
 
 ```js
