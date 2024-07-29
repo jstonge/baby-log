@@ -7,7 +7,7 @@ toc: false
 <h1>Hello, Breastfeeding</h1>
 
 ```js
-const db = DuckDBClient.of({data: FileAttachment("./data/baby.csv")});
+const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
 ```
 
 ```js
@@ -17,6 +17,7 @@ const bs = db.query("SELECT * FROM data")
 ```js
 Inputs.table(bs)
 ```
+
 
 <!-- ```sql id=days 
 SELECT MAX(DaysSinceBirth) as Days FROM data
