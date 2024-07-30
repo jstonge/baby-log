@@ -261,6 +261,7 @@ Time1,Time2,Duration,Activities,DaysSinceBirth,Quantity (ml)
 2024-07-28 21:31,,,Pipi,10,
 2024-07-28 22:20,2024-07-28 22:30,9m 58s,Allaitement,10,
 2024-07-28 23:34,2024-07-28 23:49,15m 3s,Allaitement,10,
+2024-07-28 23:58,,,Allaitement,10,20
 2024-07-29 3:29,,,Selles,11,
 2024-07-29 3:32,,,Pipi,11,
 2024-07-29 3:33,2024-07-29 3:59,26m 14s,Allaitement,11,
@@ -278,6 +279,8 @@ Time1,Time2,Duration,Activities,DaysSinceBirth,Quantity (ml)
 2024-07-29 11:43,,,Pipi,11,
 2024-07-29 11:54,,,Selles,11,
 2024-07-29 11:54,2024-07-29 12:10,15m 54s,Allaitement,11,
+2024-07-29 11:48,2024-07-29 12:04,16m,Allaitement,11,
+2024-07-29 12:16,,,Lait exprimé,11,
 2024-07-29 15:02,2024-07-29 15:24,22m 8s,Allaitement,11,
 2024-07-29 15:31,,,Lait exprimé,11,
 2024-07-29 15:50,,,Pipi,11,
@@ -300,4 +303,6 @@ Time1,Time2,Duration,Activities,DaysSinceBirth,Quantity (ml)
 2024-07-30 5:38,,,Allaitement,12,
 2024-07-30 8:42,2024-07-30 9:21,38m 48s,Allaitement,12,
 2024-07-30 9:22,,,Lait exprimé,12,25
-2024-07-30 10:06,,,Allaitement,12,
+2024-07-30 10:06,2024-07-30 10:16,9m 48s,Allaitement,12,
+2024-07-30 12:10,2024-07-30 12:18,7m 33s,Allaitement,12,
+2024-07-30 13:44,2024-07-30 13:51,7m 13s,Allaitement,12,
