@@ -1,26 +1,15 @@
 ---
 theme: dashboard
 toc: false
+sql:
+    data: Baby Journey.csv
 ---
 
 
 <h1>Hello, Breastfeeding</h1>
 
 
-```js
-const db = DuckDBClient.of({data: FileAttachment("baby.csv")});
-```
-
-```js
-const bs = db.query("SELECT * FROM data")
-```
-
-```js
-Inputs.table(bs)
-```
-
-
-<!-- ```sql id=days 
+```sql id=days 
 SELECT MAX(DaysSinceBirth) as Days FROM data
 ```
 
@@ -90,6 +79,7 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         y: { label: "Temps Cumulatif Allaitement (minutes)"  },
         color: {legend: true},
         marks: [
+            Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
             Plot.lineY(bf, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "lightgrey", 
                 })),
@@ -219,4 +209,4 @@ function extractTime(date) {
     return newDate;
 }
 
-``` -->
+```
