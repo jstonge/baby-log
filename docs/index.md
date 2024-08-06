@@ -2,8 +2,8 @@
 theme: dashboard
 toc: false
 sql:
-    data: data/Daily Log-Activities.csv
-    data2: data/Weight-Weight.csv
+    data: Activities.csv
+    data2: Weight.csv
 ---
 
 
