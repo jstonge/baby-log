@@ -19,19 +19,19 @@ SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 
 <div class="grid grid-cols-4">
   <div class="card">
-    <h2>Nombre jours d'existence</h2>
+    <h2># Days of Existence</h2>
     <span class="big">${[...days][0]['Days']}</span>
   </div>
   <div class="card">
-    <h2>Total nombre d'allaitements</h2>
+    <h2>Total # breastfeeds</h2>
     <span class="big">${[...count_pipi][0]['n']}</span>
   </div>
   <div class="card">
-    <h2>Total nombre 💩</h2>
+    <h2>Total number of 💩</h2>
     <span class="big">${[...count_pipi][1]['n']}</span>
   </div>
   <div class="card">
-    <h2>Total nombre pipi</h2>
+    <h2>Total # of wet diapers</h2>
     <span class="big">${[...count_pipi][2]['n']}</span>
   </div>
 </div>
@@ -49,18 +49,19 @@ const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaite
 ```js
 const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']);
 ```
-
-<div class="grid grid-cols-1">
-  <div class="card">
+<div class="grid grid-cols-3">
+  <div class="card grid-colspan-2">
     <h3>Brush to filter</h3>
     ${resize((width => Plot.plot({
         width,
+        height: 90,
         x: { transform: (x) => formatTime(x), label: "Date"  },
         marks: [
             Plot.frame(),
+            Plot.rectY(nights, { x1: "start", x2:"end", fill: "midnightblue", fillOpacity: 0.2 }),
             Plot.tickX(raw_data, {x: "Time1"}),
             (index, scales, channels, dimensions, context) => {
-            const x1 = dimensions.marginLeft;
+                const x1 = dimensions.marginLeft;
             const x2 = dimensions.width - dimensions.marginRight;
             const y1 = 0;
             const y2 = dimensions.height;
@@ -75,17 +76,16 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         width,
         grid: true,
         nice:true,
+        marginBottom: 55,
         x: { transform: (x) => formatTime(x), label: "Date"  },
-        y: { label: "Temps Cumulatif Allaitement (minutes)"  },
-        color: {legend: true},
+        y: { label: "Cumulative sum breastfeeding (mins)"  },
+        color: {legend: true, type: "quantize", label: "Breastfeeding time"},
         marks: [
-            Plot.axisX({label: null, fontSize: 0, tickSize: 0}),
-            Plot.lineY(bf, Plot.mapY("cumsum", {
-                x: "start", y: "Duration", stroke: "lightgrey", 
-                })),
-            Plot.dotY(bf, Plot.mapY("cumsum", {
-                x: "start", y: "Duration", fill: "black", tip: true, title: d=>`${d.start}(${d.Duration}min)`
-                })),
+            Plot.link(get_coords(), {
+                x1: "x1", x2: "x2", y1: "y1", y2:"y2", markerEnd: "arrow",
+                stroke: (d) => d.y2 - d.y1, strokeWidth: 1.8, 
+                tip: true, title: d=>`${d.x1}(${d.y2-d.y1}mins)`
+                }),
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
@@ -94,38 +94,33 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
                 text: (d) => `${emoji[d.Activities]} `,
                 x: "start",
                 y: 0,
-                dy: 15
+                dy: 45
+            }),
+            Plot.rectY(nights_bf, { 
+                x1: "start", x2: "end", y: d3.sum(guideline.map(d=>d.Duration)), fill: "midnightblue", opacity: 0.1 
             })
             ]})
     )}
-    ${resize((width) => Plot.plot({ 
-            width,
-            x: { transform: (x) => formatTime(x) },
-            nice:true,
-            marginLeft: 40,
-            marks: [
-                Plot.frame(),
-                Plot.barX(bf, { x1: "start", x2: "end" })
-            ]})
-        )}
+    <br>
+    <small>p.s. Midnight blue zones represent nights, starting at 19:00 and ending at 7:00. Ticked lines are breastfeeding guidelines, which is about 30mins/3hours.</small>
+    </div>
+    <div class="card">
+    ${resize((width) => Plot.plot({
+        x: {type: "utc"},
+        width,
+        height:100,
+        marks: [
+            Plot.frame(),
+            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.2})
+        ]
+        })
+    )} 
     </div>
 </div>
 <div class="card" style="padding: 0;">
     ${Inputs.table(bf)}
 </div>
 
-<br><br>
-
-```js
-Plot.plot({
-    x: {type: "utc"},
-    height:100,
-    marks: [
-        Plot.frame(),
-        Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.2})
-    ]
-})
-```
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
@@ -209,4 +204,87 @@ function extractTime(date) {
     return newDate;
 }
 
+```
+
+```js
+Plot.plot({ 
+        grid: true,
+        nice:true,
+        x: { transform: (x) => formatTime(x), label: "Date"  },
+        y: { label: "Temps Cumulatif Allaitement (minutes)"  },
+        color: {legend: true},
+        marks: [
+            Plot.rect(get_coords(), {
+                x1: "x1", x2: "x2", y1: "y1", y2:"y2", fill: "black", tip: true, title: d=>`${d.x1}(${d.y2-d.y1}mins)`
+                }),
+    ]})
+```
+
+```js
+function generateNightIntervals(lowerDateInput, upperDateInput) {
+    const intervals = [];
+    
+    // Ensure the lower and upper dates are Date objects
+    const lowerDate = new Date(lowerDateInput);
+    const upperDate = new Date(upperDateInput);
+
+    const formatDate = date => {
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    };
+    
+    let currentDate = new Date(lowerDate);
+    currentDate.setUTCHours(19, 0, 0, 0); // Start the first night at 19:00 of the lowerDate
+
+    while (currentDate < upperDate) {
+        // Create start and end times for the current night
+        const start = new Date(currentDate);
+
+        const end = new Date(currentDate);
+        end.setUTCDate(end.getUTCDate() + 1); // Move to the next day
+        end.setUTCHours(7, 0, 0, 0); // 07:00 of the next day
+
+        // Only include intervals that fall within the specified range
+        if (start >= lowerDate && end <= upperDate) {
+            intervals.push({ start: formatDate(start), end: formatDate(end) });
+        } else if (end > upperDate) {
+            intervals.push({ start: formatDate(start), end: formatDate(upperDate) });
+            break;
+        }
+        
+        // Move to the next day at 19:00
+        currentDate.setUTCDate(currentDate.getUTCDate() + 1);
+        currentDate.setUTCHours(19, 0, 0, 0);
+    }
+
+    return intervals;
+}
+
+```
+```js
+const nights = generateNightIntervals(raw_data.at(0)['Time1'], raw_data.at(raw_data.length-1)['Time2']);
+```
+
+```js
+const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['end']);
+```
+
+```js
+function get_coords() {
+    let cumulativeDuration = 0;
+    return bf.map(d => {
+    const previousDuration = cumulativeDuration;
+    cumulativeDuration += d.Duration;
+    return {
+        x1: d.start,
+        y1: previousDuration,
+        x2: d.end,
+        y2: cumulativeDuration
+    };
+    });
+}
 ```
