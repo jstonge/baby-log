@@ -2,7 +2,8 @@
 theme: dashboard
 toc: false
 sql:
-    data: Baby Journey.csv
+    data: data/Daily Log-Activities.csv
+    data2: data/Weight-Weight.csv
 ---
 
 
@@ -15,6 +16,10 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 
 ```sql id=count_pipi 
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
+```
+
+```sql id=[...weight]
+SELECT Days::STRING as days, Weight FROM data2
 ```
 
 <div class="grid grid-cols-4">
@@ -43,22 +48,27 @@ const bf = breastfeed_ts.filter(d =>
 ```
 
 ```js
+const nights = generateNightIntervals(raw_data.at(0)['Time1'], raw_data.at(raw_data.length-1)['Time2']);
+const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['end']);
+```
+
+```js
 const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
 ```
 
 ```js
 const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']);
 ```
+
 <div class="grid grid-cols-3">
   <div class="card grid-colspan-2">
     <h3>Brush to filter</h3>
     ${resize((width => Plot.plot({
         width,
-        height: 90,
+        height: 70,
         x: { transform: (x) => formatTime(x), label: "Date"  },
         marks: [
             Plot.frame(),
-            Plot.rectY(nights, { x1: "start", x2:"end", fill: "midnightblue", fillOpacity: 0.2 }),
             Plot.tickX(raw_data, {x: "Time1"}),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
@@ -76,25 +86,31 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         width,
         grid: true,
         nice:true,
-        marginBottom: 55,
-        x: { transform: (x) => formatTime(x), label: "Date"  },
+        marginBottom: 45,
+        x: { transform: (x) => formatTime(x), label: null  },
         y: { label: "Cumulative sum breastfeeding (mins)"  },
-        color: {legend: true, type: "quantize", label: "Breastfeeding time"},
+        color: {
+            legend: true, type: "ordinal", 
+            domain: ["Novice", "Average", "Pro", "Pro Extra"], 
+            range: ["#966532", "silver", "olive", "#E5B80B"], 
+            label: "Breastfeeding time"
+        },
         marks: [
             Plot.link(get_coords(), {
                 x1: "x1", x2: "x2", y1: "y1", y2:"y2", markerEnd: "arrow",
-                stroke: (d) => d.y2 - d.y1, strokeWidth: 1.8, 
+                stroke: (d) => d.QualityBF, 
+                strokeWidth: 1.8, 
                 tip: true, title: d=>`${d.x1}(${d.y2-d.y1}mins)`
                 }),
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
             Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
-                fontSize: 20,
+                fontSize: 18,
                 text: (d) => `${emoji[d.Activities]} `,
                 x: "start",
                 y: 0,
-                dy: 45
+                dy: 35
             }),
             Plot.rectY(nights_bf, { 
                 x1: "start", x2: "end", y: d3.sum(guideline.map(d=>d.Duration)), fill: "midnightblue", opacity: 0.1 
@@ -105,17 +121,41 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
     <small>p.s. Midnight blue zones represent nights, starting at 19:00 and ending at 7:00. Ticked lines are breastfeeding guidelines, which is about 30mins/3hours.</small>
     </div>
     <div class="card">
+    <p>Aggregated patterns of activities</p>
     ${resize((width) => Plot.plot({
         x: {type: "utc"},
         width,
         height:100,
         marks: [
             Plot.frame(),
-            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.2})
+            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.1})
         ]
         })
     )} 
-    </div>
+    <p>Weight over time</p>
+    ${resize((width) => Plot.plot({
+        width,
+        height: 200,
+        grid: true,
+        y: {label: "Weight (grams)"},
+        x: { transform: (x) => formatDay(x), label: null  },
+        marks: [
+            Plot.line(weight, {x: "days", y: "Weight"}),
+            Plot.dot(weight, {x: "days", y: "Weight", fill: "black", stroke: "white"})
+        ]
+        })
+    )} 
+    <p>Average breastfeed duration</p>
+    ${resize((width) => Plot.plot({
+        width,
+        height: 200,
+        y: {grid: true},
+        marks: [
+            Plot.rectY(raw_data, Plot.binX({y:"count"}, {x: "Duration"}))
+        ]
+        })
+    )} 
+</div>
 </div>
 <div class="card" style="padding: 0;">
     ${Inputs.table(bf)}
@@ -134,9 +174,8 @@ const setStartEnd = (se) => startEnd.value = se;
 
 ```js
 const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
+const formatDay = d3.utcParse("%Y-%m-%d");
 ```
-
-
 
 ```sql id=[...breastfeed_ts]
 SELECT 
@@ -144,6 +183,7 @@ SELECT
     Time2 as end,
     regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration,
     Activities,
+    qualityBF,
     DaysSinceBirth
 FROM data 
 WHERE Activities = 'Allaitement'
@@ -156,10 +196,8 @@ WHERE Activities != 'Allaitement'
 ```
 
 ```sql id=[...raw_data]
-SELECT * FROM data 
+SELECT regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration, * FROM data 
 ```
-
-
 
 ```js
 function generateGuideline(lowerDateInput, upperDateInput) {
@@ -204,23 +242,6 @@ function extractTime(date) {
     return newDate;
 }
 
-```
-
-```js
-Plot.plot({ 
-        grid: true,
-        nice:true,
-        x: { transform: (x) => formatTime(x), label: "Date"  },
-        y: { label: "Temps Cumulatif Allaitement (minutes)"  },
-        color: {legend: true},
-        marks: [
-            Plot.rect(get_coords(), {
-                x1: "x1", x2: "x2", y1: "y1", y2:"y2", fill: "black", tip: true, title: d=>`${d.x1}(${d.y2-d.y1}mins)`
-                }),
-    ]})
-```
-
-```js
 function generateNightIntervals(lowerDateInput, upperDateInput) {
     const intervals = [];
     
@@ -264,27 +285,18 @@ function generateNightIntervals(lowerDateInput, upperDateInput) {
     return intervals;
 }
 
-```
-```js
-const nights = generateNightIntervals(raw_data.at(0)['Time1'], raw_data.at(raw_data.length-1)['Time2']);
-```
-
-```js
-const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['end']);
-```
-
-```js
 function get_coords() {
     let cumulativeDuration = 0;
     return bf.map(d => {
-    const previousDuration = cumulativeDuration;
-    cumulativeDuration += d.Duration;
-    return {
-        x1: d.start,
-        y1: previousDuration,
-        x2: d.end,
-        y2: cumulativeDuration
-    };
+        const previousDuration = cumulativeDuration;
+        cumulativeDuration += d.Duration;
+        return {
+            x1: d.start,
+            y1: previousDuration,
+            x2: d.end,
+            y2: cumulativeDuration,
+            QualityBF: d.QualityBF
+        };
     });
 }
 ```
