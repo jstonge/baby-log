@@ -2,21 +2,27 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-07-18 11:00,2024-07-18 11:30,Allaitement,Average,,30m,0
 2024-07-18 12:55,2024-07-18 13:05,Allaitement,Average,,10m,0
 2024-07-18 14:45,2024-07-18 14:50,Allaitement,Average,,5m,0
+2024-07-18 17:00,,Selles,Average,,,0
 2024-07-18 18:35,2024-07-18 18:45,Allaitement,Average,,10m,0
+2024-07-18 23:50,,Selles,Average,,,0
 2024-07-19 1:05,2024-07-19 1:15,Allaitement,Average,,10m,1
 2024-07-19 2:45,2024-07-19 2:48,Allaitement,Average,,3m,1
 2024-07-19 3:00,2024-07-19 3:05,Allaitement,Average,,5m,1
 2024-07-19 5:05,2024-07-19 5:15,Allaitement,Average,,10m,1
 2024-07-19 7:00,2024-07-19 7:04,Allaitement,Average,,4m,1
 2024-07-19 9:00,2024-07-19 9:03,Allaitement,Average,,3m,1
+2024-07-19 9:00,,Selles,Average,,,1
 2024-07-19 13:15,2024-07-19 13:28,Allaitement,Average,,13m,1
 2024-07-19 13:46,2024-07-19 13:56,Allaitement,Average,,10m,1
 2024-07-19 14:55,2024-07-19 15:10,Allaitement,Average,,15m,1
 2024-07-19 15:20,2024-07-19 15:25,Allaitement,Average,,5m,1
 2024-07-19 17:10,2024-07-19 17:40,Allaitement,Average,,30m,1
+2024-07-19 19:10,,Pipi,Average,,,1
+2024-07-20 0:15,,Selles,Average,,,2
 2024-07-20 9:30,2024-07-20 10:00,Allaitement,Average,,30m,2
 2024-07-20 12:12,2024-07-20 12:32,Allaitement,Average,,20m,2
 2024-07-20 12:57,2024-07-20 13:12,Allaitement,Average,,15m,2
+2024-07-20 15:07,,Lait exprimé,Average,15,,2
 2024-07-20 15:20,2024-07-20 15:25,Allaitement,Average,,5m,2
 2024-07-20 17:07,2024-07-20 17:17,Allaitement,Average,,10m,2
 2024-07-20 17:37,2024-07-20 17:47,Allaitement,Average,,10m,2
@@ -25,390 +31,384 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-07-20 20:27,2024-07-20 20:32,Allaitement,Average,,5m 4s,2
 2024-07-20 20:36,2024-07-20 20:46,Allaitement,Average,,10m 2s,2
 2024-07-20 22:20,2024-07-20 22:40,Allaitement,Average,,19m 20s,2
+2024-07-20 23:57,,Lait exprimé,Average,10,,2
 2024-07-21 1:47,2024-07-21 1:50,Allaitement,Average,,2m 44s,3
 2024-07-21 1:59,2024-07-21 2:19,Allaitement,Average,,19m 31s,3
 2024-07-21 2:32,2024-07-21 2:59,Allaitement,Average,,26m 45s,3
 2024-07-21 5:28,2024-07-21 5:36,Allaitement,Average,,8m,3
+2024-07-21 6:20,,Lait exprimé,Average,7,,3
 2024-07-21 6:38,2024-07-21 6:41,Allaitement,Average,,2m 55s,3
 2024-07-21 6:47,2024-07-21 6:59,Allaitement,Average,,11m 44s,3
 2024-07-21 7:31,2024-07-21 7:34,Allaitement,Average,,3m 27s,3
 2024-07-21 7:37,2024-07-21 7:51,Allaitement,Average,,13m 53s,3
 2024-07-21 8:47,2024-07-21 9:24,Allaitement,Average,,37m 10s,3
+2024-07-21 9:32,,Lait exprimé,Average,13,,3
 2024-07-21 11:10,2024-07-21 11:40,Allaitement,Average,,30m 4s,3
+2024-07-21 11:40,,Lait exprimé,Average,10,,3
+2024-07-21 13:01,,Selles,Average,,,3
 2024-07-21 14:30,2024-07-21 14:36,Allaitement,Average,,5m 7s,3
 2024-07-21 14:44,2024-07-21 14:48,Allaitement,Average,,3m 58s,3
 2024-07-21 14:51,2024-07-21 15:17,Allaitement,Average,,26m 15s,3
 2024-07-21 15:28,2024-07-21 15:35,Allaitement,Average,,7m 2s,3
+2024-07-21 15:35,,Lait exprimé,Average,15,,3
 2024-07-21 17:55,2024-07-21 18:22,Allaitement,Average,,27m 3s,3
 2024-07-21 18:41,2024-07-21 18:52,Allaitement,Average,,10m 32s,3
 2024-07-21 20:03,2024-07-21 20:08,Allaitement,Average,,5m 5s,3
+2024-07-21 20:12,,Pipi,Average,,,3
 2024-07-21 20:14,2024-07-21 20:22,Allaitement,Average,,8m 19s,3
 2024-07-21 20:30,2024-07-21 20:35,Allaitement,Average,,5m 17s,3
 2024-07-21 20:52,2024-07-21 21:09,Allaitement,Average,,16m 58s,3
 2024-07-21 21:33,2024-07-21 21:38,Allaitement,Average,,4m 48s,3
 2024-07-22 0:14,2024-07-22 0:24,Allaitement,Average,,10m 41s,4
 2024-07-22 1:38,2024-07-22 1:44,Allaitement,Average,,5m 21s,4
+2024-07-22 2:11,,Lait exprimé,Average,15,,4
+2024-07-22 2:12,,Pipi,Average,,,4
+2024-07-22 2:13,,Lait exprimé,Average,15,,4
 2024-07-22 4:28,2024-07-22 4:54,Allaitement,Average,,26m 18s,4
+2024-07-22 5:10,,Lait exprimé,Average,15,,4
 2024-07-22 8:45,2024-07-22 9:03,Allaitement,Average,,18m 11s,4
+2024-07-22 9:29,,Lait exprimé,Average,20,,4
+2024-07-22 9:53,,Pipi,Average,,,4
 2024-07-22 10:00,2024-07-22 10:05,Allaitement,Average,,4m 59s,4
 2024-07-22 10:52,2024-07-22 10:59,Allaitement,Average,,6m 48s,4
+2024-07-22 11:00,,Pipi,Average,,,4
 2024-07-22 12:04,2024-07-22 12:10,Allaitement,Average,,5m 17s,4
 2024-07-22 12:15,2024-07-22 12:34,Allaitement,Average,,19m,4
 2024-07-22 14:38,2024-07-22 14:49,Allaitement,Average,20,11m 7s,4
+2024-07-22 15:00,,Pipi,Average,,,4
 2024-07-22 15:07,2024-07-22 15:16,Allaitement,Average,,9m 21s,4
+2024-07-22 15:24,,Lait exprimé,Average,20,,4
 2024-07-22 16:35,2024-07-22 16:46,Allaitement,Average,,11m 16s,4
 2024-07-22 17:59,2024-07-22 18:04,Allaitement,Average,,5m 23s,4
 2024-07-22 18:55,2024-07-22 19:07,Allaitement,Average,,12m 6s,4
+2024-07-22 19:41,,Lait exprimé,Average,20,,4
 2024-07-22 19:59,2024-07-22 20:05,Allaitement,Average,,6m 18s,4
+2024-07-22 20:46,,Pipi,Average,,,4
 2024-07-22 21:12,2024-07-22 21:19,Allaitement,Average,,6m 45s,4
 2024-07-23 1:31,2024-07-23 1:38,Allaitement,Average,,7m 1s,5
+2024-07-23 1:34,,Lait exprimé,Average,20,,5
+2024-07-23 1:43,,Pipi,Average,,,5
 2024-07-23 3:59,2024-07-23 4:13,Allaitement,Average,,14m 35s,5
+2024-07-23 4:17,,Lait exprimé,Average,20,,5
 2024-07-23 6:15,2024-07-23 6:35,Allaitement,Average,,19m 48s,5
+2024-07-23 6:40,,Lait exprimé,Average,20,,5
 2024-07-23 7:55,2024-07-23 8:11,Allaitement,Average,,16m 3s,5
 2024-07-23 8:23,2024-07-23 8:29,Allaitement,Average,,5m 31s,5
 2024-07-23 8:34,2024-07-23 8:40,Allaitement,Average,,6m 6s,5
+2024-07-23 8:43,,Lait exprimé,Average,20,,5
+2024-07-23 10:06,,Pipi,Average,,,5
 2024-07-23 10:07,2024-07-23 10:23,Allaitement,Average,,16m 1s,5
 2024-07-23 11:55,2024-07-23 12:23,Allaitement,Average,,28m 32s,5
+2024-07-23 12:29,,Lait exprimé,Average,20,,5
+2024-07-23 12:33,,Lait exprimé,Average,20,,5
+2024-07-23 13:11,,Pipi,Average,,,5
 2024-07-23 13:22,2024-07-23 13:30,Allaitement,Average,,7m 7s,5
 2024-07-23 14:53,2024-07-23 15:05,Allaitement,Average,,11m 48s,5
+2024-07-23 16:00,,Lait exprimé,Average,20,,5
 2024-07-23 19:36,2024-07-23 20:02,Allaitement,Average,,26m 3s,5
+2024-07-23 20:34,,Selles,Average,,,5
 2024-07-23 23:17,2024-07-23 23:24,Allaitement,Average,,6m 54s,5
+2024-07-23 23:43,,Lait exprimé,Average,20,,5
 2024-07-24 2:18,2024-07-24 2:48,Allaitement,Average,,30m 4s,6
+2024-07-24 2:53,,Lait exprimé,Average,20,,6
+2024-07-24 3:07,,Pipi,Average,,,6
+2024-07-24 3:08,,Selles,Average,,,6
 2024-07-24 6:45,2024-07-24 6:55,Allaitement,Average,,9m 56s,6
+2024-07-24 6:55,,Lait exprimé,Average,20,,6
 2024-07-24 7:44,2024-07-24 8:20,Allaitement,Average,,35m 9s,6
 2024-07-24 8:45,2024-07-24 8:52,Allaitement,Average,,7m 16s,6
+2024-07-24 9:48,,Pipi,Average,,,6
 2024-07-24 10:57,2024-07-24 11:04,Allaitement,Average,,7m 24s,6
+2024-07-24 10:58,,Lait exprimé,Average,20,,6
 2024-07-24 11:34,2024-07-24 11:46,Allaitement,Average,,11m 42s,6
 2024-07-24 13:04,2024-07-24 13:17,Allaitement,Average,,13m 3s,6
 2024-07-24 13:30,2024-07-24 14:00,Allaitement,Average,,30m 48s,6
 2024-07-24 14:18,2024-07-24 14:31,Allaitement,Average,,13m 10s,6
+2024-07-24 14:39,,Lait exprimé,Average,20,,6
+2024-07-24 15:11,,Pipi,Average,,,6
 2024-07-24 16:20,2024-07-24 16:50,Allaitement,Average,,30m 13s,6
 2024-07-24 17:07,2024-07-24 17:28,Allaitement,Average,,21m 12s,6
+2024-07-24 17:37,,Lait exprimé,Average,20,,6
+2024-07-24 18:51,,Pipi,Average,,,6
 2024-07-24 19:10,2024-07-24 19:20,Allaitement,Average,,10m 9s,6
+2024-07-24 19:28,,Lait exprimé,Average,20,,6
+2024-07-24 23:11,,Pipi,Average,,,6
 2024-07-24 23:31,2024-07-24 23:47,Allaitement,Average,,16m 36s,6
+2024-07-25 0:00,,Lait exprimé,Average,20,,7
 2024-07-25 0:16,2024-07-25 0:27,Allaitement,Average,,11m 5s,7
 2024-07-25 1:30,2024-07-25 1:36,Allaitement,Average,,6m 31s,7
+2024-07-25 1:51,,Lait exprimé,Average,20,,7
 2024-07-25 1:52,2024-07-25 2:04,Allaitement,Average,,11m 17s,7
 2024-07-25 5:30,2024-07-25 5:37,Allaitement,Average,,7m 16s,7
+2024-07-25 5:40,,Lait exprimé,Average,20,,7
 2024-07-25 7:35,2024-07-25 7:41,Allaitement,Average,,6m 14s,7
 2024-07-25 8:10,2024-07-25 8:26,Allaitement,Average,,16m 8s,7
 2024-07-25 8:10,2024-07-25 8:35,Allaitement,Average,,25m 9s,7
+2024-07-25 8:45,,Lait exprimé,Average,20,,7
+2024-07-25 9:18,,Pipi,Average,,,7
+2024-07-25 9:18,,Selles,Average,,,7
 2024-07-25 10:32,2024-07-25 10:49,Allaitement,Average,,17m 4s,7
+2024-07-25 10:57,,Lait exprimé,Average,20,,7
+2024-07-25 11:11,,Pipi,Average,,,7
 2024-07-25 11:32,2024-07-25 11:43,Allaitement,Average,,11m 36s,7
+2024-07-25 11:56,,Lait exprimé,Average,20,,7
 2024-07-25 12:08,2024-07-25 12:18,Allaitement,Average,,10m 7s,7
 2024-07-25 13:49,2024-07-25 14:01,Allaitement,Average,,12m 8s,7
 2024-07-25 14:19,2024-07-25 14:24,Allaitement,Average,,5m 5s,7
+2024-07-25 14:33,,Lait exprimé,Average,20,,7
 2024-07-25 15:32,2024-07-25 15:47,Allaitement,Average,,14m 47s,7
+2024-07-25 15:47,,Lait exprimé,Average,20,,7
+2024-07-25 15:50,,Lait exprimé,Average,20,,7
+2024-07-25 15:50,,Pipi,Average,,,7
 2024-07-25 15:55,2024-07-25 16:05,Allaitement,Average,,10m 21s,7
 2024-07-25 16:21,2024-07-25 16:29,Allaitement,Average,,8m 30s,7
 2024-07-25 16:48,2024-07-25 16:55,Allaitement,Average,,7m 15s,7
+2024-07-25 17:00,,Lait exprimé,Average,20,,7
 2024-07-25 18:34,2024-07-25 18:44,Allaitement,Average,,9m 49s,7
+2024-07-25 18:48,,Lait exprimé,Average,20,,7
 2024-07-25 20:19,2024-07-25 20:24,Allaitement,Average,,5m 13s,7
 2024-07-25 20:47,2024-07-25 20:54,Allaitement,Average,,6m 36s,7
+2024-07-25 21:07,,Pipi,Average,,,7
+2024-07-25 21:12,,Lait exprimé,Average,20,,7
 2024-07-25 21:28,2024-07-25 21:37,Allaitement,Average,,8m 7s,7
 2024-07-25 22:23,2024-07-25 22:29,Allaitement,Average,,5m 19s,7
+2024-07-25 22:38,,Lait exprimé,Average,20,,7
+2024-07-25 22:38,,Pipi,Average,,,7
 2024-07-26 1:51,2024-07-26 2:01,Allaitement,Average,,9m 57s,8
+2024-07-26 2:15,,Pipi,Average,,,8
 2024-07-26 5:05,2024-07-26 5:11,Allaitement,Average,,6m 3s,8
 2024-07-26 6:59,2024-07-26 7:10,Allaitement,Average,,10m 53s,8
+2024-07-26 7:14,,Lait exprimé,Average,20,,8
 2024-07-26 7:25,2024-07-26 7:42,Allaitement,Average,,17m 7s,8
+2024-07-26 7:26,,Pipi,Average,,,8
 2024-07-26 8:07,2024-07-26 8:24,Allaitement,Average,,16m 39s,8
 2024-07-26 9:37,2024-07-26 9:47,Allaitement,Average,,9m 19s,8
+2024-07-26 9:54,,Lait exprimé,Average,25,,8
 2024-07-26 9:56,2024-07-26 10:06,Allaitement,Average,,9m 51s,8
 2024-07-26 10:43,2024-07-26 10:49,Allaitement,Average,,6m 4s,8
+2024-07-26 10:54,,Pipi,Average,,,8
 2024-07-26 11:09,2024-07-26 11:22,Allaitement,Average,,13m 32s,8
 2024-07-26 11:48,2024-07-26 12:09,Allaitement,Average,,20m 58s,8
+2024-07-26 12:09,,Pipi,Average,,,8
+2024-07-26 12:18,,Lait exprimé,Average,20,,8
 2024-07-26 12:33,2024-07-26 12:40,Allaitement,Average,,6m 53s,8
 2024-07-26 14:54,2024-07-26 15:21,Allaitement,Average,,27m 18s,8
+2024-07-26 15:28,,Lait exprimé,Average,20,,8
+2024-07-26 15:38,,Selles,Average,,,8
 2024-07-26 16:01,2024-07-26 16:10,Allaitement,Average,,9m 7s,8
 2024-07-26 18:35,2024-07-26 18:54,Allaitement,Average,,19m 35s,8
+2024-07-26 18:59,,Selles,Average,,,8
+2024-07-26 19:06,,Lait exprimé,Average,20,,8
 2024-07-26 21:59,2024-07-26 22:09,Allaitement,Average,,10m 23s,8
+2024-07-26 22:11,,Lait exprimé,Average,20,,8
 2024-07-27 1:47,2024-07-27 2:05,Allaitement,Average,,17m 32s,9
+2024-07-27 2:09,,Lait exprimé,Average,20,,9
+2024-07-27 2:12,,Pipi,Average,,,9
+2024-07-27 2:16,,Selles,Average,,,9
 2024-07-27 2:51,2024-07-27 2:55,Allaitement,Average,,4m 4s,9
 2024-07-27 5:40,2024-07-27 5:54,Allaitement,Average,,14m 19s,9
+2024-07-27 5:57,,Lait exprimé,Average,20,,9
+2024-07-27 6:03,,Pipi,Average,,,9
 2024-07-27 7:13,2024-07-27 7:18,Allaitement,Average,,5m 11s,9
 2024-07-27 8:27,2024-07-27 9:00,Allaitement,Average,,32m 54s,9
+2024-07-27 9:10,,Lait exprimé,Average,20,,9
 2024-07-27 9:12,2024-07-27 9:19,Allaitement,Average,,7m 5s,9
 2024-07-27 9:23,2024-07-27 9:28,Allaitement,Average,,5m 13s,9
 2024-07-27 12:39,2024-07-27 13:05,Allaitement,Average,,25m 41s,9
+2024-07-27 13:07,,Selles,Average,,,9
+2024-07-27 13:13,,Pipi,Average,,,9
+2024-07-27 13:14,,Lait exprimé,Average,20,,9
 2024-07-27 15:50,2024-07-27 16:13,Allaitement,Average,,22m 33s,9
+2024-07-27 16:39,,Lait exprimé,Average,20,,9
+2024-07-27 17:34,,Pipi,Average,,,9
 2024-07-27 17:50,2024-07-27 18:07,Allaitement,Average,,16m 23s,9
+2024-07-27 18:15,,Lait exprimé,Average,20,,9
 2024-07-27 19:04,2024-07-27 19:17,Allaitement,Average,,13m 9s,9
 2024-07-27 19:46,2024-07-27 19:53,Allaitement,Average,,6m 43s,9
 2024-07-27 20:06,2024-07-27 20:12,Allaitement,Average,,5m 44s,9
+2024-07-27 20:21,,Lait exprimé,Average,20,,9
+2024-07-27 20:29,,Pipi,Average,,,9
 2024-07-27 21:01,2024-07-27 21:07,Allaitement,Average,,5m 59s,9
+2024-07-27 21:07,,Pipi,Average,,,9
 2024-07-27 23:26,2024-07-27 23:35,Allaitement,Average,,9m 31s,9
+2024-07-27 23:36,,Lait exprimé,Average,20,,9
+2024-07-28 0:23,,Selles,Average,,,10
 2024-07-28 0:30,2024-07-28 0:35,Allaitement,Average,,5m 6s,10
+2024-07-28 0:34,,Pipi,Average,,,10
+2024-07-28 1:00,,Selles,Average,,,10
 2024-07-28 1:12,2024-07-28 1:22,Allaitement,Average,,10m 8s,10
 2024-07-28 5:18,2024-07-28 5:33,Allaitement,Average,,15m 8s,10
+2024-07-28 5:39,,Lait exprimé,Average,20,,10
+2024-07-28 8:06,,Selles,Average,,,10
 2024-07-28 8:13,2024-07-28 8:39,Allaitement,Average,,25m 24s,10
+2024-07-28 10:37,,Pipi,Average,,,10
 2024-07-28 10:47,2024-07-28 11:03,Allaitement,Average,,16m 11s,10
+2024-07-28 11:10,,Lait exprimé,Average,20,,10
 2024-07-28 12:24,2024-07-28 12:47,Allaitement,Average,,23m 31s,10
 2024-07-28 13:22,2024-07-28 13:35,Allaitement,Average,,12m 54s,10
+2024-07-28 13:35,,Pipi,Average,,,10
+2024-07-28 13:48,,Lait exprimé,Average,20,,10
 2024-07-28 14:23,2024-07-28 14:41,Allaitement,Average,,17m 58s,10
 2024-07-28 15:03,2024-07-28 15:13,Allaitement,Average,,10m 7s,10
 2024-07-28 15:55,2024-07-28 16:03,Allaitement,Average,,7m 46s,10
+2024-07-28 16:11,,Lait exprimé,Average,20,,10
+2024-07-28 18:11,,Pipi,Average,,,10
 2024-07-28 18:25,2024-07-28 19:04,Allaitement,Average,,38m 48s,10
+2024-07-28 19:06,,Selles,Average,,,10
+2024-07-28 19:10,,Lait exprimé,Average,20,,10
 2024-07-28 21:10,2024-07-28 21:29,Allaitement,Average,,18m 54s,10
+2024-07-28 21:31,,Pipi,Average,,,10
 2024-07-28 22:20,2024-07-28 22:30,Allaitement,Average,,9m 58s,10
 2024-07-28 23:34,2024-07-28 23:49,Allaitement,Average,,15m 3s,10
 2024-07-28 23:58,,Allaitement,Average,20,,10
+2024-07-29 3:29,,Selles,Average,,,11
+2024-07-29 3:32,,Pipi,Average,,,11
 2024-07-29 3:33,2024-07-29 3:59,Allaitement,Average,,26m 14s,11
+2024-07-29 4:01,,Lait exprimé,Average,20,,11
 2024-07-29 5:32,2024-07-29 5:59,Allaitement,Average,,27m 14s,11
+2024-07-29 5:59,,Pipi,Average,,,11
+2024-07-29 6:02,,Lait exprimé,Average,20,,11
 2024-07-29 7:03,2024-07-29 7:08,Allaitement,Average,,5m 6s,11
 2024-07-29 7:45,2024-07-29 7:56,Allaitement,Average,,10m 31s,11
+2024-07-29 8:00,,Pipi,Average,,,11
+2024-07-29 8:05,,Selles,Average,,,11
 2024-07-29 8:37,2024-07-29 8:47,Allaitement,Average,,10m 12s,11
+2024-07-29 9:00,,Lait exprimé,Average,20,,11
 2024-07-29 10:30,2024-07-29 10:39,Allaitement,Average,,8m 59s,11
+2024-07-29 11:43,,Pipi,Average,,,11
 2024-07-29 11:48,2024-07-29 12:04,Allaitement,Average,,16m,11
+2024-07-29 11:54,,Selles,Average,,,11
 2024-07-29 11:54,2024-07-29 12:10,Allaitement,Average,,15m 54s,11
+2024-07-29 12:16,,Lait exprimé,Average,20,,11
 2024-07-29 15:02,2024-07-29 15:24,Allaitement,Average,,22m 8s,11
+2024-07-29 15:31,,Lait exprimé,Average,20,,11
+2024-07-29 15:50,,Pipi,Average,,,11
 2024-07-29 17:40,2024-07-29 18:07,Allaitement,Average,,26m 36s,11
+2024-07-29 18:12,,Pipi,Average,,,11
+2024-07-29 18:14,,Lait exprimé,Average,20,,11
 2024-07-29 18:23,2024-07-29 18:29,Allaitement,Average,,5m 44s,11
+2024-07-29 19:23,,Pipi,Average,,,11
+2024-07-29 19:35,,Selles,Average,,,11
 2024-07-29 20:23,2024-07-29 20:42,Allaitement,Average,,19m 11s,11
+2024-07-29 21:10,,Lait exprimé,Average,20,,11
 2024-07-29 21:33,2024-07-29 21:48,Allaitement,Average,,15m 40s,11
+2024-07-29 21:58,,Pipi,Average,,,11
 2024-07-29 22:40,2024-07-29 22:47,Allaitement,Average,,7m 5s,11
+2024-07-29 23:46,,Pipi,Average,,,11
 2024-07-29 23:48,2024-07-29 23:56,Allaitement,Average,,8m 39s,11
+2024-07-30 4:58,,Selles,Average,,,12
+2024-07-30 5:06,,Pipi,Average,,,12
 2024-07-30 5:13,2024-07-30 5:29,Allaitement,Average,,16m,12
 2024-07-30 5:38,,Allaitement,Average,,,12
 2024-07-30 8:42,2024-07-30 9:21,Allaitement,Average,,38m 48s,12
+2024-07-30 9:22,,Lait exprimé,Average,25,,12
 2024-07-30 10:06,2024-07-30 10:16,Allaitement,Average,,9m 48s,12
 2024-07-30 12:10,2024-07-30 12:18,Allaitement,Average,,7m 33s,12
 2024-07-30 13:44,2024-07-30 13:51,Allaitement,Average,,7m 13s,12
+2024-07-30 14:45,,Pipi,Average,,,12
 2024-07-30 14:50,2024-07-30 15:11,Allaitement,Average,,20m 52s,12
+2024-07-30 15:27,,Lait exprimé,Average,25,,12
 2024-07-30 18:05,2024-07-30 18:37,Allaitement,Average,,32m 6s,12
 2024-07-30 19:12,2024-07-30 19:27,Allaitement,Average,,15m 9s,12
 2024-07-30 22:41,2024-07-30 23:01,Allaitement,Average,,20m 3s,12
+2024-07-30 22:57,,Pipi,Average,,,12
+2024-07-30 23:18,,Lait exprimé,Average,25,,12
 2024-07-31 3:58,2024-07-31 4:24,Allaitement,Average,,25m 45s,13
+2024-07-31 4:29,,Selles,Average,,,13
+2024-07-31 4:29,,Lait exprimé,Average,25,,13
 2024-07-31 6:15,2024-07-31 6:20,Allaitement,Average,,5m 14s,13
+2024-07-31 7:18,,Selles,Average,,,13
 2024-07-31 7:42,2024-07-31 7:53,Allaitement,Average,,11m 2s,13
+2024-07-31 8:03,,Lait exprimé,Average,25,,13
 2024-07-31 8:32,2024-07-31 8:37,Allaitement,Average,,5m 3s,13
+2024-07-31 8:38,,Pipi,Average,,,13
 2024-07-31 8:50,2024-07-31 8:55,Allaitement,Average,,5m 7s,13
 2024-07-31 10:00,2024-07-31 10:07,Allaitement,Average,,6m 8s,13
 2024-07-31 10:39,2024-07-31 10:43,Allaitement,Average,,4m 1s,13
+2024-07-31 10:51,,Lait exprimé,Average,25,,13
+2024-07-31 11:25,,Pipi,Average,,,13
+2024-07-31 13:11,,Pipi,Average,,,13
+2024-07-31 13:42,,Pipi,Average,,,13
 2024-07-31 14:03,2024-07-31 14:14,Allaitement,Average,,11m 2s,13
+2024-07-31 14:17,,Lait exprimé,Average,25,,13
 2024-07-31 15:31,2024-07-31 15:42,Allaitement,Average,,11m 8s,13
+2024-07-31 16:01,,Pipi,Average,,,13
 2024-07-31 16:19,2024-07-31 16:29,Allaitement,Average,,10m 3s,13
+2024-07-31 16:44,,Selles,Average,,,13
 2024-07-31 17:58,2024-07-31 18:13,Allaitement,Average,,15m 7s,13
+2024-07-31 18:02,,Lait exprimé,Average,25,,13
+2024-07-31 18:15,,Pipi,Average,,,13
+2024-07-31 21:04,,Lait exprimé,Average,25,,13
 2024-07-31 21:08,2024-07-31 21:44,Allaitement,Average,,35m 32s,13
+2024-07-31 21:44,,Lait exprimé,Average,25,,13
 2024-08-01 1:02,2024-08-01 1:25,Allaitement,Average,,23m 21s,14
+2024-08-01 1:25,,Lait exprimé,Average,25,,14
 2024-08-01 4:28,2024-08-01 4:43,Allaitement,Average,,15m 20s,14
+2024-08-01 4:43,,Lait exprimé,Average,25,,14
 2024-08-01 4:56,,Allaitement,Average,,,14
 2024-08-01 5:59,2024-08-01 6:23,Allaitement,Average,,24m 10s,14
+2024-08-01 6:27,,Lait exprimé,Average,25,,14
+2024-08-01 6:33,,Pipi,Average,,,14
 2024-08-01 7:22,2024-08-01 7:37,Allaitement,Average,,15m 11s,14
+2024-08-01 7:43,,Lait exprimé,Average,25,,14
+2024-08-01 8:00,,Pipi,Average,,,14
 2024-08-01 9:52,2024-08-01 9:55,Allaitement,Average,,3m 9s,14
+2024-08-01 10:45,,Pipi,Average,,,14
 2024-08-01 10:49,2024-08-01 11:02,Allaitement,Average,,13m 7s,14
+2024-08-01 11:14,,Lait exprimé,Average,25,,14
+2024-08-01 11:35,,Pipi,Average,,,14
+2024-08-01 11:49,,Selles,Average,,,14
 2024-08-01 12:08,2024-08-01 12:16,Allaitement,Average,,8m 2s,14
+2024-08-01 12:18,,Pipi,Average,,,14
 2024-08-01 13:01,2024-08-01 13:09,Allaitement,Average,,7m 3s,14
 2024-08-01 13:46,2024-08-01 14:16,Allaitement,Average,,29m 49s,14
 2024-08-01 14:34,2024-08-01 14:50,Allaitement,Average,,16m 2s,14
+2024-08-01 14:56,,Pipi,Average,,,14
 2024-08-01 15:06,2024-08-01 15:11,Allaitement,Average,,5m 6s,14
 2024-08-01 16:32,2024-08-01 16:38,Allaitement,Average,,6m 1s,14
+2024-08-01 16:38,,Pipi,Average,,,14
 2024-08-01 17:00,2024-08-01 17:10,Allaitement,Average,,10m 11s,14
+2024-08-01 17:10,,Lait exprimé,Average,25,,14
 2024-08-01 18:29,2024-08-01 18:49,Allaitement,Average,,20m 4s,14
 2024-08-01 19:10,2024-08-01 19:20,Allaitement,Average,,9m 11s,14
 2024-08-01 19:50,2024-08-01 20:00,Allaitement,Average,,10m,14
+2024-08-01 20:04,,Lait exprimé,Average,25,,14
+2024-08-01 21:18,,Pipi,Average,,,14
 2024-08-01 21:26,2024-08-01 21:30,Allaitement,Average,,4m 7s,14
 2024-08-01 21:44,2024-08-01 21:55,Allaitement,Average,,11m 2s,14
+2024-08-01 22:07,,Lait exprimé,Average,25,,14
 2024-08-01 22:57,2024-08-01 23:06,Allaitement,Average,,9m,14
 2024-08-02 2:15,2024-08-02 2:38,Allaitement,Average,,23m 2s,15
+2024-08-02 2:52,,Lait exprimé,Average,5,,15
+2024-08-02 2:53,,Pipi,Average,,,15
 2024-08-02 6:00,2024-08-02 6:20,Allaitement,Average,,20m 13s,15
+2024-08-02 6:31,,Lait exprimé,Average,5,,15
+2024-08-02 6:32,,Pipi,Average,,,15
 2024-08-02 8:23,2024-08-02 8:30,Allaitement,Average,,7m 2s,15
+2024-08-02 8:32,,Selles,Average,,,15
+2024-08-02 8:34,,Pipi,Average,,,15
 2024-08-02 8:37,2024-08-02 8:37,Allaitement,Average,,1s,15
 2024-08-02 9:20,2024-08-02 9:32,Allaitement,Average,,12m 25s,15
 2024-08-02 9:43,2024-08-02 9:54,Allaitement,Average,,11m 7s,15
 2024-08-02 10:11,2024-08-02 10:16,Allaitement,Average,,5m 2s,15
 2024-08-02 11:25,2024-08-02 11:47,Allaitement,Average,,21m 57s,15
+2024-08-02 11:53,,Lait exprimé,Average,5,,15
 2024-08-02 13:08,2024-08-02 13:32,Allaitement,Average,,23m 18s,15
+2024-08-02 13:38,,Pipi,Average,,,15
 2024-08-02 14:25,2024-08-02 14:46,Allaitement,Average,,21m 11s,15
+2024-08-02 14:54,,Lait exprimé,Average,5,,15
 2024-08-02 16:05,2024-08-02 16:30,Allaitement,Average,,24m 32s,15
 2024-08-02 17:20,2024-08-02 17:27,Allaitement,Average,,6m 22s,15
+2024-08-02 17:32,,Pipi,Average,,,15
 2024-08-02 18:05,2024-08-02 18:09,Allaitement,Average,,3m 8s,15
 2024-08-02 18:50,2024-08-02 19:00,Allaitement,Average,,10m 13s,15
-2024-08-02 22:17,2024-08-02 22:43,Allaitement,Pro,,26m 2s,15
-2024-08-03 3:56,2024-08-03 4:10,Allaitement,Novice,,14m 49s,16
-2024-07-18 17:00,,Selles,Average,,,0
-2024-07-18 23:50,,Selles,Average,,,0
-2024-07-19 9:00,,Selles,Average,,,1
-2024-07-20 0:15,,Selles,Average,,,2
-2024-07-21 13:01,,Selles,Average,,,3
-2024-07-23 20:34,,Selles,Average,,,5
-2024-07-24 3:08,,Selles,Average,,,6
-2024-07-25 9:18,,Selles,Average,,,7
-2024-07-26 15:38,,Selles,Average,,,8
-2024-07-26 18:59,,Selles,Average,,,8
-2024-07-27 2:16,,Selles,Average,,,9
-2024-07-27 13:07,,Selles,Average,,,9
-2024-07-28 0:23,,Selles,Average,,,10
-2024-07-28 1:00,,Selles,Average,,,10
-2024-07-28 8:06,,Selles,Average,,,10
-2024-07-28 19:06,,Selles,Average,,,10
-2024-07-29 3:29,,Selles,Average,,,11
-2024-07-29 8:05,,Selles,Average,,,11
-2024-07-29 11:54,,Selles,Average,,,11
-2024-07-29 19:35,,Selles,Average,,,11
-2024-07-30 4:58,,Selles,Average,,,12
-2024-07-31 4:29,,Selles,Average,,,13
-2024-07-31 7:18,,Selles,Average,,,13
-2024-07-31 16:44,,Selles,Average,,,13
-2024-08-01 11:49,,Selles,Average,,,14
-2024-08-02 8:32,,Selles,Average,,,15
-2024-08-02 22:14,,Selles,Average,,,15
-2024-07-19 19:10,,Pipi,Average,,,1
-2024-07-21 20:12,,Pipi,Average,,,3
-2024-07-22 2:12,,Pipi,Average,,,4
-2024-07-22 9:53,,Pipi,Average,,,4
-2024-07-22 11:00,,Pipi,Average,,,4
-2024-07-22 15:00,,Pipi,Average,,,4
-2024-07-22 20:46,,Pipi,Average,,,4
-2024-07-23 1:43,,Pipi,Average,,,5
-2024-07-23 10:06,,Pipi,Average,,,5
-2024-07-23 13:11,,Pipi,Average,,,5
-2024-07-24 3:07,,Pipi,Average,,,6
-2024-07-24 9:48,,Pipi,Average,,,6
-2024-07-24 15:11,,Pipi,Average,,,6
-2024-07-24 18:51,,Pipi,Average,,,6
-2024-07-24 23:11,,Pipi,Average,,,6
-2024-07-25 9:18,,Pipi,Average,,,7
-2024-07-25 11:11,,Pipi,Average,,,7
-2024-07-25 15:50,,Pipi,Average,,,7
-2024-07-25 21:07,,Pipi,Average,,,7
-2024-07-25 22:38,,Pipi,Average,,,7
-2024-07-26 2:15,,Pipi,Average,,,8
-2024-07-26 7:26,,Pipi,Average,,,8
-2024-07-26 10:54,,Pipi,Average,,,8
-2024-07-26 12:09,,Pipi,Average,,,8
-2024-07-27 2:12,,Pipi,Average,,,9
-2024-07-27 6:03,,Pipi,Average,,,9
-2024-07-27 13:13,,Pipi,Average,,,9
-2024-07-27 17:34,,Pipi,Average,,,9
-2024-07-27 20:29,,Pipi,Average,,,9
-2024-07-27 21:07,,Pipi,Average,,,9
-2024-07-28 0:34,,Pipi,Average,,,10
-2024-07-28 10:37,,Pipi,Average,,,10
-2024-07-28 13:35,,Pipi,Average,,,10
-2024-07-28 18:11,,Pipi,Average,,,10
-2024-07-28 21:31,,Pipi,Average,,,10
-2024-07-29 3:32,,Pipi,Average,,,11
-2024-07-29 5:59,,Pipi,Average,,,11
-2024-07-29 8:00,,Pipi,Average,,,11
-2024-07-29 11:43,,Pipi,Average,,,11
-2024-07-29 15:50,,Pipi,Average,,,11
-2024-07-29 18:12,,Pipi,Average,,,11
-2024-07-29 19:23,,Pipi,Average,,,11
-2024-07-29 21:58,,Pipi,Average,,,11
-2024-07-29 23:46,,Pipi,Average,,,11
-2024-07-30 5:06,,Pipi,Average,,,12
-2024-07-30 14:45,,Pipi,Average,,,12
-2024-07-30 22:57,,Pipi,Average,,,12
-2024-07-31 8:38,,Pipi,Average,,,13
-2024-07-31 11:25,,Pipi,Average,,,13
-2024-07-31 13:11,,Pipi,Average,,,13
-2024-07-31 13:42,,Pipi,Average,,,13
-2024-07-31 16:01,,Pipi,Average,,,13
-2024-07-31 18:15,,Pipi,Average,,,13
-2024-08-01 6:33,,Pipi,Average,,,14
-2024-08-01 8:00,,Pipi,Average,,,14
-2024-08-01 10:45,,Pipi,Average,,,14
-2024-08-01 11:35,,Pipi,Average,,,14
-2024-08-01 12:18,,Pipi,Average,,,14
-2024-08-01 14:56,,Pipi,Average,,,14
-2024-08-01 16:38,,Pipi,Average,,,14
-2024-08-01 21:18,,Pipi,Average,,,14
-2024-08-02 2:53,,Pipi,Average,,,15
-2024-08-02 6:32,,Pipi,Average,,,15
-2024-08-02 8:34,,Pipi,Average,,,15
-2024-08-02 13:38,,Pipi,Average,,,15
-2024-08-02 17:32,,Pipi,Average,,,15
 2024-08-02 22:11,,Pipi,Average,,,15
-2024-08-03 4:15,,Pipi,Average,,,16
-2024-07-20 15:07,,Lait exprimé,Average,15,,2
-2024-07-20 23:57,,Lait exprimé,Average,10,,2
-2024-07-21 6:20,,Lait exprimé,Average,7,,3
-2024-07-21 9:32,,Lait exprimé,Average,13,,3
-2024-07-21 11:40,,Lait exprimé,Average,10,,3
-2024-07-21 15:35,,Lait exprimé,Average,15,,3
-2024-07-22 2:11,,Lait exprimé,Average,15,,4
-2024-07-22 2:13,,Lait exprimé,Average,15,,4
-2024-07-22 5:10,,Lait exprimé,Average,15,,4
-2024-07-22 9:29,,Lait exprimé,Average,20,,4
-2024-07-22 15:24,,Lait exprimé,Average,20,,4
-2024-07-22 19:41,,Lait exprimé,Average,20,,4
-2024-07-23 1:34,,Lait exprimé,Average,20,,5
-2024-07-23 4:17,,Lait exprimé,Average,20,,5
-2024-07-23 6:40,,Lait exprimé,Average,20,,5
-2024-07-23 8:43,,Lait exprimé,Average,20,,5
-2024-07-23 12:29,,Lait exprimé,Average,20,,5
-2024-07-23 12:33,,Lait exprimé,Average,20,,5
-2024-07-23 16:00,,Lait exprimé,Average,20,,5
-2024-07-23 23:43,,Lait exprimé,Average,20,,5
-2024-07-24 2:53,,Lait exprimé,Average,20,,6
-2024-07-24 6:55,,Lait exprimé,Average,20,,6
-2024-07-24 10:58,,Lait exprimé,Average,20,,6
-2024-07-24 14:39,,Lait exprimé,Average,20,,6
-2024-07-24 17:37,,Lait exprimé,Average,20,,6
-2024-07-24 19:28,,Lait exprimé,Average,20,,6
-2024-07-25 0:00,,Lait exprimé,Average,20,,7
-2024-07-25 1:51,,Lait exprimé,Average,20,,7
-2024-07-25 5:40,,Lait exprimé,Average,20,,7
-2024-07-25 8:45,,Lait exprimé,Average,20,,7
-2024-07-25 10:57,,Lait exprimé,Average,20,,7
-2024-07-25 11:56,,Lait exprimé,Average,20,,7
-2024-07-25 14:33,,Lait exprimé,Average,20,,7
-2024-07-25 15:47,,Lait exprimé,Average,20,,7
-2024-07-25 15:50,,Lait exprimé,Average,20,,7
-2024-07-25 17:00,,Lait exprimé,Average,20,,7
-2024-07-25 18:48,,Lait exprimé,Average,20,,7
-2024-07-25 21:12,,Lait exprimé,Average,20,,7
-2024-07-25 22:38,,Lait exprimé,Average,20,,7
-2024-07-26 7:14,,Lait exprimé,Average,20,,8
-2024-07-26 9:54,,Lait exprimé,Average,25,,8
-2024-07-26 12:18,,Lait exprimé,Average,20,,8
-2024-07-26 15:28,,Lait exprimé,Average,20,,8
-2024-07-26 19:06,,Lait exprimé,Average,20,,8
-2024-07-26 22:11,,Lait exprimé,Average,20,,8
-2024-07-27 2:09,,Lait exprimé,Average,20,,9
-2024-07-27 5:57,,Lait exprimé,Average,20,,9
-2024-07-27 9:10,,Lait exprimé,Average,20,,9
-2024-07-27 13:14,,Lait exprimé,Average,20,,9
-2024-07-27 16:39,,Lait exprimé,Average,20,,9
-2024-07-27 18:15,,Lait exprimé,Average,20,,9
-2024-07-27 20:21,,Lait exprimé,Average,20,,9
-2024-07-27 23:36,,Lait exprimé,Average,20,,9
-2024-07-28 5:39,,Lait exprimé,Average,20,,10
-2024-07-28 11:10,,Lait exprimé,Average,20,,10
-2024-07-28 13:48,,Lait exprimé,Average,20,,10
-2024-07-28 16:11,,Lait exprimé,Average,20,,10
-2024-07-28 19:10,,Lait exprimé,Average,20,,10
-2024-07-29 4:01,,Lait exprimé,Average,20,,11
-2024-07-29 6:02,,Lait exprimé,Average,20,,11
-2024-07-29 9:00,,Lait exprimé,Average,20,,11
-2024-07-29 12:16,,Lait exprimé,Average,20,,11
-2024-07-29 15:31,,Lait exprimé,Average,20,,11
-2024-07-29 18:14,,Lait exprimé,Average,20,,11
-2024-07-29 21:10,,Lait exprimé,Average,20,,11
-2024-07-30 9:22,,Lait exprimé,Average,25,,12
-2024-07-30 15:27,,Lait exprimé,Average,25,,12
-2024-07-30 23:18,,Lait exprimé,Average,25,,12
-2024-07-31 4:29,,Lait exprimé,Average,25,,13
-2024-07-31 8:03,,Lait exprimé,Average,25,,13
-2024-07-31 10:51,,Lait exprimé,Average,25,,13
-2024-07-31 14:17,,Lait exprimé,Average,25,,13
-2024-07-31 18:02,,Lait exprimé,Average,25,,13
-2024-07-31 21:04,,Lait exprimé,Average,25,,13
-2024-07-31 21:44,,Lait exprimé,Average,25,,13
-2024-08-01 1:25,,Lait exprimé,Average,25,,14
-2024-08-01 4:43,,Lait exprimé,Average,25,,14
-2024-08-01 6:27,,Lait exprimé,Average,25,,14
-2024-08-01 7:43,,Lait exprimé,Average,25,,14
-2024-08-01 11:14,,Lait exprimé,Average,25,,14
-2024-08-01 17:10,,Lait exprimé,Average,25,,14
-2024-08-01 20:04,,Lait exprimé,Average,25,,14
-2024-08-01 22:07,,Lait exprimé,Average,25,,14
-2024-08-02 2:52,,Lait exprimé,Average,5,,15
-2024-08-02 6:31,,Lait exprimé,Average,5,,15
-2024-08-02 11:53,,Lait exprimé,Average,5,,15
-2024-08-02 14:54,,Lait exprimé,Average,5,,15
+2024-08-02 22:14,,Selles,Average,,,15
+2024-08-02 22:17,2024-08-02 22:43,Allaitement,Pro,,26m 2s,15
 2024-08-02 23:00,,Lait exprimé,Average,20,,15
+2024-08-03 3:56,2024-08-03 4:10,Allaitement,Novice,,14m 49s,16
 2024-08-03 4:15,,Lait exprimé,Average,20,,16
+2024-08-03 4:15,,Pipi,Average,,,16
 2024-08-03 4:22,2024-08-03 4:33,Allaitement,Average,,11m 15s,16
 2024-08-03 7:27,2024-08-03 8:00,Allaitement,Average,,33m 37s,16
 2024-08-03 7:49,,Pipi,Average,,,16
@@ -426,10 +426,10 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-08-03 15:25,2024-08-03 15:37,Allaitement,Average,,12m 1s,16
 2024-08-03 15:39,2024-08-03 15:49,Allaitement,Average,,10m 2s,16
 2024-08-03 16:24,,Lait exprimé,,20,,16
-2024-08-03 18:16,2024-08-03 18:26,Allaitement,Pro,,10m 25s,16
-2024-08-03 19:35,,Lait exprimé,,20,,16
 2024-08-03 16:46,,Pipi,,,,16
 2024-08-03 16:50,2024-08-03 17:10,Allaitement,Novice,,20m 8s,16
+2024-08-03 18:16,2024-08-03 18:26,Allaitement,Pro,,10m 25s,16
+2024-08-03 19:35,,Lait exprimé,,20,,16
 2024-08-03 21:06,2024-08-03 21:15,Allaitement,Average,,8m 16s,16
 2024-08-03 21:35,,Pipi,,,,16
 2024-08-03 21:45,2024-08-03 21:52,Allaitement,Average,,7m 2s,16
@@ -447,3 +447,39 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-08-04 11:49,,Lait exprimé,,20,,17
 2024-08-04 12:18,,Pipi,,,,17
 2024-08-04 14:46,2024-08-04 14:59,Allaitement,Pro,,13m 2s,17
+2024-08-04 14:53,,Pipi,,,,17
+2024-08-04 15:05,,Lait exprimé,,20,,17
+2024-08-04 16:11,2024-08-04 16:23,Allaitement,Novice,,12m 2s,17
+2024-08-04 16:50,2024-08-04 17:06,Allaitement,Pro,,15m 11s,17
+2024-08-04 17:07,,Lait exprimé,,20,,17
+2024-08-04 19:27,2024-08-04 19:34,Allaitement,Average,,7m 1s,17
+2024-08-04 19:43,2024-08-04 20:03,Allaitement,,,20m 19s,17
+2024-08-04 20:14,,Lait exprimé,,20,,17
+2024-08-04 20:21,,Selles,,,,17
+2024-08-05 0:35,,Pipi,,,,18
+2024-08-05 0:44,,Selles,,,,18
+2024-08-05 0:49,2024-08-05 1:03,Pipi,,,13m 7s,18
+2024-08-05 0:49,2024-08-05 1:13,Allaitement,Average,,23m 9s,18
+2024-08-05 1:13,,Lait exprimé,,20,,18
+2024-08-05 4:29,2024-08-05 4:53,Allaitement,Average,,24m 21s,18
+2024-08-05 4:58,,Lait exprimé,,20,,18
+2024-08-05 6:56,2024-08-05 7:20,Allaitement,Average,,23m 32s,18
+2024-08-05 7:24,,Pipi,,,,18
+2024-08-05 7:30,,Allaitement,,20,,18
+2024-08-05 8:54,2024-08-05 9:19,Allaitement,Pro,,24m 53s,18
+2024-08-05 9:40,,Selles,,,,18
+2024-08-05 10:52,2024-08-05 11:08,Allaitement,Average,,16m 9s,18
+2024-08-05 11:13,,Pipi,,,,18
+2024-08-05 11:13,,Lait exprimé,,20,,18
+2024-08-05 14:50,2024-08-05 15:13,Allaitement,Pro,,23m 12s,18
+2024-08-05 16:32,2024-08-05 16:51,Allaitement,Average,,19m 4s,18
+2024-08-05 17:29,2024-08-05 17:39,Allaitement,Pro,,10m 3s,18
+2024-08-05 17:39,,Pipi,,,,18
+2024-08-05 22:00,2024-08-05 22:25,Allaitement,Pro,,25m 9s,18
+2024-08-06 2:21,2024-08-06 2:41,Allaitement,Pro,,19m 33s,19
+2024-08-06 2:41,,Lait exprimé,,25,,19
+2024-08-06 2:51,,Pipi,,,,19
+2024-08-06 6:40,2024-08-06 7:09,Allaitement,Pro,,29m 3s,19
+2024-08-06 6:59,,Pipi,,,,19
+2024-08-06 7:09,,Lait exprimé,,25,,19
+2024-08-06 9:00,2024-08-06 9:09,Allaitement,,,9m 6s,19
