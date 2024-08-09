@@ -53,7 +53,7 @@ const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['
 ```
 
 ```js
-const emoji = ({ Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
+const emoji = ({Allaitement: "🤱", Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
 ```
 
 ```js
@@ -91,16 +91,19 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         y: { label: "Cumulative sum breastfeeding (mins)"  },
         color: {
             legend: true, type: "ordinal", 
-            domain: ["Novice", "Average", "Pro", "Pro Extra"], 
-            range: ["#966532", "silver", "olive", "#E5B80B"], 
+            domain: ["Novice", "Average", "Pro"], 
+            range: ["#966532", "silver", "#E5B80B"], 
             label: "Breastfeeding time"
         },
         marks: [
             Plot.link(get_coords(), {
-                x1: "x1", x2: "x2", y1: "y1", y2:"y2", markerEnd: "arrow",
+                x1: "x1", x2: "x2", y1: "y1", y2:"y2", 
+                markerEnd: "dot", 
+                markerStart: "dot",
                 stroke: (d) => d.QualityBF, 
                 strokeWidth: 1.8, 
-                tip: true, title: d=>`${d.x1}(${d.y2-d.y1}mins)`
+                tip: true, 
+                title: d=>`${d.x1}(${d.y2-d.y1}mins)`
                 }),
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
@@ -110,7 +113,7 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
                 text: (d) => `${emoji[d.Activities]} `,
                 x: "start",
                 y: 0,
-                dy: 35
+                dy: 45
             }),
             Plot.rectY(nights_bf, { 
                 x1: "start", x2: "end", y: d3.sum(guideline.map(d=>d.Duration)), fill: "midnightblue", opacity: 0.1 
@@ -128,7 +131,7 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         height:100,
         marks: [
             Plot.frame(),
-            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.1})
+            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.08})
         ]
         })
     )} 
@@ -157,10 +160,33 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
     )} 
 </div>
 </div>
+<div class="card">
+${resize((width) => Plot.plot({
+    width,
+    x: {grid: true},
+    facet: {padding: 50},
+    color: {
+        domain: ["Allaitement", "Lait exprimé", "Pipi", "Selles"],
+        range: ["olive", "lightgrey", "blue", "brown"]},
+    marks: [
+        Plot.frame(),
+        Plot.text(DailyActivityCount, {
+            y: "DaysSinceBirth", x:"frequency", 
+            fx: "Activities", text: (d) => `${emoji[d.Activities]} `, fontSize: 14,
+        }),
+        Plot.ruleY(DailyActivityCount, {
+            y: "DaysSinceBirth", x:"frequency", stroke: "Activities", fx: "Activities"
+        })
+    ]
+}))}
+</div>
 <div class="card" style="padding: 0;">
     ${Inputs.table(bf)}
 </div>
 
+```js
+DailyActivityCount
+```
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
@@ -299,4 +325,11 @@ function get_coords() {
         };
     });
 }
+```
+
+```sql id=[...DailyActivityCount]
+SELECT  DaysSinceBirth, Activities, COUNT(Activities) as frequency 
+FROM data 
+GROUP BY Activities, DaysSinceBirth
+ORDER BY DaysSinceBirth DESC
 ```
