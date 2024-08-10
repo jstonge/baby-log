@@ -84,6 +84,17 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
+            Plot.text([{ 
+                text:"Guideline\n(30mins/3hrs)", 
+                x:bf.at((bf.length-1))['start'], 
+                y:d3.sum(guideline.map(d=>d.Duration))
+                }], {
+                    x: "x",  y: "y", text: "text", 
+                    fontSize: 12, 
+                    dx:-5, dy:-10,
+                    rotate: -22, 
+                    opacity: 0.3
+                }),
             Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
                 fontSize: 18,
                 text: (d) => `${emoji[d.Activities]} `,
@@ -157,6 +168,7 @@ ${resize((width) => Plot.plot({
     ]
 }))}
 </div>
+
 
 <!-- LOAD DATA VIA SQL -->
 
@@ -332,4 +344,8 @@ function get_coords() {
         };
     });
 }
+```
+
+```js
+[{text:"hello", x:bf.at(bf.length/2)['start'], y:"d3.sum(guideline.map(d=>d.Duration)) / 2"}]
 ```
