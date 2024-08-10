@@ -6,26 +6,16 @@ sql:
     data2: Weight.csv
 ---
 
-
-<h1>Hello, Breastfeeding</h1>
-
-
-```sql id=days 
-SELECT MAX(DaysSinceBirth) as Days FROM data
-```
+<h1>Hello, Breastfeeding 🤱🏻</h1>
 
 ```sql id=count_pipi 
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 ```
 
-```sql id=[...weight]
-SELECT Days::STRING as days, Weight FROM data2
-```
-
 <div class="grid grid-cols-4">
   <div class="card">
     <h2># Days of Existence</h2>
-    <span class="big">${[...days][0]['Days']}</span>
+    <span class="big">${[...await sql`SELECT MAX(DaysSinceBirth) as d FROM data`][0]['d']}</span>
   </div>
   <div class="card">
     <h2>Total # breastfeeds</h2>
@@ -41,35 +31,20 @@ SELECT Days::STRING as days, Weight FROM data2
   </div>
 </div>
 
-```js
-const bf = breastfeed_ts.filter(d => 
-    formatTime(d.start) > startEnd[0] && formatTime(d.start) < startEnd[1]
-)
-```
-
-```js
-const nights = generateNightIntervals(raw_data.at(0)['Time1'], raw_data.at(raw_data.length-1)['Time2']);
-const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['end']);
-```
-
-```js
-const emoji = ({Allaitement: "🤱", Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
-```
-
-```js
-const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']);
-```
 
 <div class="grid grid-cols-3">
   <div class="card grid-colspan-2">
+    <h2>Cumulative time breastfeeding</h2>
     <h3>Brush to filter</h3>
     ${resize((width => Plot.plot({
         width,
         height: 70,
         x: { transform: (x) => formatTime(x), label: "Date"  },
         marks: [
-            Plot.frame(),
-            Plot.tickX(raw_data, {x: "Time1"}),
+            Plot.frame(), 
+            Plot.rectY(nights, { 
+                x1: "start", x2: "end", fill: "midnightblue", opacity: 0.1 
+            }),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
             const x2 = dimensions.width - dimensions.marginRight;
@@ -81,7 +56,6 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
             }
     ]
     })))}
-    <br>
     ${resize((width) => Plot.plot({ 
         width,
         grid: true,
@@ -93,7 +67,8 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
             legend: true, type: "ordinal", 
             domain: ["Novice", "Average", "Pro"], 
             range: ["#966532", "silver", "#E5B80B"], 
-            label: "Breastfeeding time"
+            label: "Breastfeeding time",
+            marginRight: 40,
         },
         marks: [
             Plot.link(get_coords(), {
@@ -124,10 +99,10 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
     <small>p.s. Midnight blue zones represent nights, starting at 19:00 and ending at 7:00. Ticked lines are breastfeeding guidelines, which is about 30mins/3hours.</small>
     </div>
     <div class="card">
-    <p>Aggregated patterns of activities</p>
     ${resize((width) => Plot.plot({
-        x: {type: "utc"},
+        title: "Aggregated patterns of activities",
         width,
+        x: {type: "utc"},
         height:100,
         marks: [
             Plot.frame(),
@@ -135,8 +110,8 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         ]
         })
     )} 
-    <p>Weight over time</p>
     ${resize((width) => Plot.plot({
+        title: "Weight over time",
         width,
         height: 200,
         grid: true,
@@ -148,8 +123,8 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
         ]
         })
     )} 
-    <p>Average breastfeed duration</p>
     ${resize((width) => Plot.plot({
+        title: "Average breastfeed duration",
         width,
         height: 200,
         y: {grid: true},
@@ -162,6 +137,7 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
 </div>
 <div class="card">
 ${resize((width) => Plot.plot({
+    title: "Daily activity count",
     width,
     x: {grid: true},
     facet: {padding: 50},
@@ -170,44 +146,24 @@ ${resize((width) => Plot.plot({
         range: ["olive", "lightgrey", "blue", "brown"]},
     marks: [
         Plot.frame(),
+        Plot.ruleY(DailyActivityCount, {
+            y: "DaysSinceBirth", x:"frequency", stroke: "Activities", fx: "Activities"
+        }),
         Plot.text(DailyActivityCount, {
             y: "DaysSinceBirth", x:"frequency", 
             fx: "Activities", text: (d) => `${emoji[d.Activities]} `, fontSize: 14,
-        }),
-        Plot.ruleY(DailyActivityCount, {
-            y: "DaysSinceBirth", x:"frequency", stroke: "Activities", fx: "Activities"
         })
     ]
 }))}
 </div>
-<div class="card" style="padding: 0;">
-    ${Inputs.table(bf)}
-</div>
 
-```js
-DailyActivityCount
-```
-
-```js
-const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
-```
-
-```js
-const one_day_before_max = new Date(maxDate.getTime() - 86400*1000)
-const startEnd = Mutable([one_day_before_max, maxDate]);
-const setStartEnd = (se) => startEnd.value = se;
-```
-
-```js
-const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
-const formatDay = d3.utcParse("%Y-%m-%d");
-```
+<!-- LOAD DATA VIA SQL -->
 
 ```sql id=[...breastfeed_ts]
 SELECT 
     Time1 as start, 
     Time2 as end,
-    regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration,
+    regexp_extract(Duration, '([0-9 ]+)m?', 1)::Integer as Duration,
     Activities,
     qualityBF,
     DaysSinceBirth
@@ -225,7 +181,58 @@ WHERE Activities != 'Allaitement'
 SELECT regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration, * FROM data 
 ```
 
+```sql id=[...weight]
+SELECT Days::STRING as days, Weight FROM data2
+```
+
+```sql id=[...DailyActivityCount]
+SELECT  DaysSinceBirth, Activities, COUNT(Activities) as frequency 
+FROM data 
+GROUP BY Activities, DaysSinceBirth
+ORDER BY DaysSinceBirth DESC
+```
+
+<!-- USER INTERACTIONS WRANGLING -->
+
 ```js
+// Breastfeeding data, filtered
+const bf = breastfeed_ts.filter(d => 
+    formatTime(d.start) > startEnd[0] && formatTime(d.start) < startEnd[1]
+)
+```
+
+```js
+const nights = generateNightIntervals(raw_data.at(0)['Time1'], raw_data.at(raw_data.length-1)['Time2']);
+const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['end']);
+```
+
+```js
+const emoji = ({Allaitement: "🤱🏻", Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
+```
+
+```js
+// See helper function. Guideline for breastfeeding is 30min/3hours. 
+const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']);
+```
+
+```js
+const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
+```
+
+```js
+// Brush filter stuff
+const one_day_before_max = new Date(maxDate.getTime() - 86400*1000)
+const startEnd = Mutable([one_day_before_max, maxDate]);
+const setStartEnd = (se) => startEnd.value = se;
+```
+
+```js
+const formatTime = d3.utcParse("%Y-%m-%d %H:%M");
+const formatDay = d3.utcParse("%Y-%m-%d");
+```
+
+```js
+
 function generateGuideline(lowerDateInput, upperDateInput) {
     const guideline = [];
     
@@ -325,11 +332,4 @@ function get_coords() {
         };
     });
 }
-```
-
-```sql id=[...DailyActivityCount]
-SELECT  DaysSinceBirth, Activities, COUNT(Activities) as frequency 
-FROM data 
-GROUP BY Activities, DaysSinceBirth
-ORDER BY DaysSinceBirth DESC
 ```

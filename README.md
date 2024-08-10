@@ -5,3 +5,4 @@ Small dashboard to track breastfeeding of my newborn child. We use [Number](http
 ### Notes
 
  - Important that all entries are complete. If not, the data loader fails and doesn't read the columns properly.
+ - Vectors were clunky. We are back representing breastfeeding with links, with a start and end. We also get rid of `Pro Extra` breastfeeding type.
