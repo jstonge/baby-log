@@ -164,7 +164,7 @@ ${resize((width) => Plot.plot({
 SELECT 
     Time1 as start, 
     Time2 as end,
-    regexp_extract(Duration, '([0-9 ]+)m?', 1)::Integer as Duration,
+    regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration,
     Activities,
     qualityBF,
     DaysSinceBirth
