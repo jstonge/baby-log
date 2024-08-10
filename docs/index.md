@@ -11,11 +11,14 @@ sql:
 ```sql id=count_pipi 
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 ```
+```sql id=[...countDays]
+SELECT MAX(DaysSinceBirth) as Days FROM data
+```
 
 <div class="grid grid-cols-4">
   <div class="card">
     <h2># Days of Existence</h2>
-    <span class="big">${[...await sql`SELECT MAX(DaysSinceBirth) as d FROM data`][0]['d']}</span>
+    <span class="big">${countDays[0]['Days']}</span>
   </div>
   <div class="card">
     <h2>Total # breastfeeds</h2>
@@ -232,7 +235,6 @@ const formatDay = d3.utcParse("%Y-%m-%d");
 ```
 
 ```js
-
 function generateGuideline(lowerDateInput, upperDateInput) {
     const guideline = [];
     
