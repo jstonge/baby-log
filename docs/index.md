@@ -12,10 +12,14 @@ sql:
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 ```
 
+```sql id=days 
+SELECT MAX(DaysSinceBirth) as Days FROM data
+```
+
 <div class="grid grid-cols-4">
   <div class="card">
     <h2># Days of Existence</h2>
-    <span class="big">${[...await sql`SELECT MAX(DaysSinceBirth) as d FROM data`][0]['d']}</span>
+    <span class="big">${[...days][0]['Days']}</span>
   </div>
   <div class="card">
     <h2>Total # breastfeeds</h2>
@@ -42,9 +46,7 @@ SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
         x: { transform: (x) => formatTime(x), label: "Date"  },
         marks: [
             Plot.frame(), 
-            Plot.rectY(nights, { 
-                x1: "start", x2: "end", fill: "midnightblue", opacity: 0.1 
-            }),
+            Plot.tickX(raw_data, {x: "Time1"}),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
             const x2 = dimensions.width - dimensions.marginRight;
@@ -68,7 +70,6 @@ SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
             domain: ["Novice", "Average", "Pro"], 
             range: ["#966532", "silver", "#E5B80B"], 
             label: "Breastfeeding time",
-            marginRight: 40,
         },
         marks: [
             Plot.link(get_coords(), {
@@ -232,7 +233,6 @@ const formatDay = d3.utcParse("%Y-%m-%d");
 ```
 
 ```js
-
 function generateGuideline(lowerDateInput, upperDateInput) {
     const guideline = [];
     
