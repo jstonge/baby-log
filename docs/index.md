@@ -11,14 +11,15 @@ sql:
 ```sql id=count_pipi 
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
 ```
-```sql id=[...countDays]
+
+```sql id=days 
 SELECT MAX(DaysSinceBirth) as Days FROM data
 ```
 
 <div class="grid grid-cols-4">
   <div class="card">
     <h2># Days of Existence</h2>
-    <span class="big">${countDays[0]['Days']}</span>
+    <span class="big">${[...days][0]['Days']}</span>
   </div>
   <div class="card">
     <h2>Total # breastfeeds</h2>
@@ -45,9 +46,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
         x: { transform: (x) => formatTime(x), label: "Date"  },
         marks: [
             Plot.frame(), 
-            Plot.rectY(nights, { 
-                x1: "start", x2: "end", fill: "midnightblue", opacity: 0.1 
-            }),
+            Plot.tickX(raw_data, {x: "Time1"}),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
             const x2 = dimensions.width - dimensions.marginRight;
@@ -70,8 +69,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
             legend: true, type: "ordinal", 
             domain: ["Novice", "Average", "Pro"], 
             range: ["#966532", "silver", "#E5B80B"], 
-            label: "Breastfeeding time",
-            marginRight: 40,
+            label: "Breastfeeding time"
         },
         marks: [
             Plot.link(get_coords(), {
