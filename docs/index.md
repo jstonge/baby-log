@@ -107,7 +107,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
         height:100,
         marks: [
             Plot.frame(),
-            Plot.tickX(breastfeed_ts, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.08})
+            Plot.tickX(bf, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.08})
         ]
         })
     )} 
@@ -137,27 +137,44 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
 </div>
 </div>
 <div class="card">
-${resize((width) => Plot.plot({
+${resize((width) => activityChart(DailyActivityCount, {width}))}
+</div>
+
+```js
+function activityChart(data, { width }) {
+    const n = 2; // number of facet columns
+    const keys = Array.from(d3.union(data.map((d) => d.Activities)));
+    const index = new Map(keys.map((key, i) => [key, i]));
+    const fx = (key) => index.get(key) % n;
+    const fy = (key) => Math.floor(index.get(key) / n);
+    return Plot.plot({
     title: "Daily activity count",
     width,
+    height: 800,
     x: {grid: true},
     facet: {padding: 50},
+    // axis: null,
+    y: {insetTop: 10},
+    fx: {padding: 0.03},
     color: {
         domain: ["Allaitement", "Lait exprimé", "Pipi", "Selles"],
         range: ["olive", "lightgrey", "blue", "brown"]},
     marks: [
         Plot.frame(),
-        Plot.ruleY(DailyActivityCount, {
-            y: "DaysSinceBirth", x:"frequency", stroke: "Activities", fx: "Activities"
+        Plot.ruleY(data, {
+            y: "DaysSinceBirth", x:"frequency", stroke: "Activities", 
+            fx: (d) => fx(d.Activities), fy: (d) => fy(d.Activities)
         }),
-        Plot.text(DailyActivityCount, {
+        Plot.text(data, {
             y: "DaysSinceBirth", x:"frequency", 
-            fx: "Activities", text: (d) => `${emoji[d.Activities]} `, fontSize: 14,
-        })
+             fx: (d) => fx(d.Activities), fy: (d) => fy(d.Activities), 
+             text: (d) => `${emoji[d.Activities]} `, fontSize: 14,
+        }),
+        Plot.text(keys, {fx, fy, frameAnchor: "top-right", fontSize: 16, dx: -6, dy: 6}),
     ]
-}))}
-</div>
-
+})
+}
+```
 
 <!-- LOAD DATA VIA SQL -->
 
