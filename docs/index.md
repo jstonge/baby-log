@@ -157,7 +157,7 @@ function activityChart(data, { width }) {
     y: {insetTop: 10},
     fx: {padding: 0.03},
     color: {
-        domain: ["Allaitement", "Lait exprimé", "Pipi", "Selles"],
+        domain: ["Allaitement", "Lait exprime", "Pipi", "Selles"],
         range: ["olive", "lightgrey", "blue", "brown"]},
     marks: [
         Plot.frame(),
@@ -226,7 +226,7 @@ const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['
 ```
 
 ```js
-const emoji = ({Allaitement: "🤱🏻", Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.réconfort": "😌" })
+const emoji = ({Allaitement: "🤱🏻", Selles: "💩", Pipi: "💧", "Lait exprime": `💉`, "Allaitement.reconfort": "😌" })
 ```
 
 ```js
