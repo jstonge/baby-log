@@ -6,7 +6,11 @@ sql:
     data2: Weight.csv
 ---
 
-<h1>Hello, Breastfeeding 🤱🏻</h1>
+<div style="display: flex; justify-content: space-between; padding: 0 20px;">
+    <h1>Hello, Breastfeeding 🤱🏻</h1>
+    <a href="https://jstonge.vercel.app/baby-log">Blog entry</a>
+</div>
+
 
 ```sql id=count_pipi 
 SELECT COUNT(Activities) as n, Activities FROM data GROUP BY Activities
@@ -42,11 +46,13 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
     <h3>Brush to filter</h3>
     ${resize((width => Plot.plot({
         width,
-        height: 70,
-        x: { transform: (x) => formatTime(x), label: "Date"  },
+        height: 150,
+        marginBottom: 40,
         marks: [
             Plot.frame(), 
-            Plot.tickX(raw_data, {x: "Time1"}),
+            Plot.rectY(raw_data, Plot.binX({y: "count"}, {
+              x: d => formatTime(d.Time1), fill: "midnightblue", fillOpacity: 0.5, thresholds: 150
+              })),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
             const x2 = dimensions.width - dimensions.marginRight;
@@ -84,7 +90,9 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
-            Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
+            Plot.textX(other_activities.filter(d => startEnd === undefined ?
+                        formatTime(d.start) > minDate && formatTime(d.start) < maxDate :
+                        formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
                 fontSize: 18,
                 text: (d) => `${emoji[d.Activities]} `,
                 x: "start",
@@ -236,6 +244,7 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
+const minDate = new Date(raw_data.at(0)['Time1'])
 ```
 
 ```js
@@ -352,6 +361,3 @@ function get_coords() {
 }
 ```
 
-```js
-[{text:"hello", x:bf.at(bf.length/2)['start'], y:"d3.sum(guideline.map(d=>d.Duration)) / 2"}]
-```
