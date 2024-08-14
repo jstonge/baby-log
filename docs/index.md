@@ -6,6 +6,7 @@ sql:
     data2: Weight.csv
 ---
 
+
 <div style="display: flex; justify-content: space-between; padding: 0 20px;">
     <h1>Hello, Breastfeeding 🤱🏻</h1>
     <a href="https://jstonge.vercel.app/baby-log">Blog entry</a>
@@ -68,7 +69,6 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
     ${resize((width) => Plot.plot({ 
         width,
         grid: true,
-        nice:true,
         marginBottom: 45,
         x: { transform: (x) => formatTime(x), label: null  },
         y: { label: "Cumulative sum breastfeeding (mins)"  },
@@ -91,9 +91,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
             Plot.lineY(guideline, Plot.mapY("cumsum", {
                 x: "start", y: "Duration", stroke: "black",  strokeDasharray: 10, strokeOpacity: 0.2
                 })),
-            Plot.textX(other_activities.filter(d => startEnd === undefined ?
-                        formatTime(d.start) > minDate && formatTime(d.start) < maxDate :
-                        formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
+            Plot.textX(other_activities.filter(d => formatTime(d.start) > startEnd[0] & formatTime(d.start) < startEnd[1]), {
                 fontSize: 18,
                 text: (d) => `${emoji[d.Activities]} `,
                 x: "start",
