@@ -116,7 +116,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
         height:100,
         marks: [
             Plot.frame(),
-            Plot.tickX(bf, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.08})
+            Plot.tickX(bf, {x: d => extractTime(formatTime(d.start)), strokeOpacity: 0.1})
         ]
         })
     )} 
@@ -133,13 +133,17 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
         ]
         })
     )} 
+    <br>
+    <big>${toggle === true ? "Time between breastfeed" : "Average breastfeed duration"}</big>
+    ${diffInput}
     ${resize((width) => Plot.plot({
-        title: "Average breastfeed duration",
         width,
         height: 200,
         y: {grid: true},
         marks: [
-            Plot.rectY(raw_data, Plot.binX({y:"count"}, {x: "Duration"}))
+            toggle ? 
+            Plot.rectY(diff_vals, Plot.binX({y:"count"}, {x: d=>d })) :
+            Plot.rectY(bf, Plot.binX({y:"count"}, {x: "Duration"}))
         ]
         })
     )} 
@@ -261,6 +265,11 @@ const formatDay = d3.utcParse("%Y-%m-%d");
 ```
 
 ```js
+const diffInput = Inputs.toggle({label:"Use time diff"});
+const toggle = Generators.input(diffInput);
+```
+
+```js
 function generateGuideline(lowerDateInput, upperDateInput) {
     const guideline = [];
     
@@ -360,4 +369,10 @@ function get_coords() {
         };
     });
 }
+```
+
+```js
+const diff_vals = bf.map((d, i) => i === bf.length-1 ? 
+    null : 
+    (formatTime(bf[i+1].start) - formatTime(bf[i].end).getTime()) / 60000)
 ```
