@@ -139,11 +139,17 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
     ${resize((width) => Plot.plot({
         width,
         height: 200,
+        nice: true,
         y: {grid: true},
+        x: {label: "Duration (minutes)"},
         marks: [
+            Plot.frame(),
             toggle ? 
-            Plot.rectY(diff_vals, Plot.binX({y:"count"}, {x: d=>d })) :
-            Plot.rectY(bf, Plot.binX({y:"count"}, {x: "Duration"}))
+            Plot.rectY(diff_vals, Plot.binX({y:"count"}, {
+                x: "Duration", fx: "isNight"})) :
+            Plot.rectY(bf, Plot.binX({y:"count"}, {
+                x: "Duration", fx: d => isNightTime(d.start)
+                }))
         ]
         })
     )} 
@@ -372,7 +378,25 @@ function get_coords() {
 ```
 
 ```js
-const diff_vals = bf.map((d, i) => i === bf.length-1 ? 
-    null : 
-    (formatTime(bf[i+1].start) - formatTime(bf[i].end).getTime()) / 60000)
+const diff_vals = bf.slice(0, -1).map((d, i) => {
+  return {
+    "Duration": (formatTime(bf[i+1].start) - formatTime(d.end).getTime()) / 60000,
+    "isNight": isNightTime(d.end)
+  };
+});
+
+```
+
+```js
+function isNightTime(dateTimeStr) {
+    // Parse the input datetime string
+    const dateTime = new Date(dateTimeStr);
+
+    // Get the hour
+    const hour = dateTime.getHours();
+
+    // Check if the hour is between 19 (7 PM) and 23:59 (11:59 PM)
+    // or between 0 (12 AM) and 7 AM
+    return (hour >= 19 || hour < 7) ? "night" : "day";
+}
 ```
