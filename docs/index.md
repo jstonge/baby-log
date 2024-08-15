@@ -46,13 +46,12 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
     <h3>Brush to filter</h3>
     ${resize((width => Plot.plot({
         width,
-        nice: true,
         height: 150,
         marginBottom: 40,
         marks: [
             Plot.frame(), 
             Plot.rectY(raw_data, Plot.binX({y: "count"}, {
-              x: d => formatTime(d.Time1), fill: "midnightblue", thresholds: 120
+              x: d => formatTime(d.Time1), fill: "midnightblue", fillOpacity: 0.5, thresholds: 150
               })),
             (index, scales, channels, dimensions, context) => {
                 const x1 = dimensions.marginLeft;
@@ -166,7 +165,7 @@ function activityChart(data, { width }) {
     y: {insetTop: 10},
     fx: {padding: 0.03},
     color: {
-        domain: ["Allaitement", "Lait exprimé", "Pipi", "Selles"],
+        domain: ["Allaitement", "Lait exprime", "Pipi", "Selles"],
         range: ["olive", "lightgrey", "blue", "brown"]},
     marks: [
         Plot.frame(),
@@ -235,7 +234,7 @@ const nights_bf = generateNightIntervals(bf.at(0)['start'], bf.at(bf.length-1)['
 ```
 
 ```js
-const emoji = ({Allaitement: "🤱🏻", Selles: "💩", Pipi: "💧", "Lait exprimé": `💉`, "Allaitement.reconfort": "😌" })
+const emoji = ({Allaitement: "🤱🏻", Selles: "💩", Pipi: "💧", "Lait exprime": `💉`, "Allaitement.reconfort": "😌" })
 ```
 
 ```js
@@ -361,3 +360,4 @@ function get_coords() {
     });
 }
 ```
+
