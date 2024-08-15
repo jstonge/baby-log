@@ -204,7 +204,7 @@ WHERE Activities != 'Allaitement'
 ```
 
 ```sql id=[...raw_data]
-SELECT regexp_extract(Duration, '([1-9 ]+)m?', 1)::Integer as Duration, * FROM data 
+SELECT regexp_extract(Duration, '([0-9 ]+)m?', 1)::Integer as Duration, * FROM data 
 ```
 
 ```sql id=[...weight]
@@ -243,7 +243,6 @@ const guideline = generateGuideline(bf.at(0)['start'], bf.at(bf.length-1)['end']
 
 ```js
 const maxDate = new Date(raw_data.at(raw_data.length-1)['Time1'])
-const minDate = new Date(raw_data.at(0)['Time1'])
 ```
 
 ```js
@@ -362,4 +361,12 @@ function get_coords() {
 
 ```js
 bf
+```
+
+```js
+startEnd
+```
+
+```js
+breastfeed_ts
 ```
