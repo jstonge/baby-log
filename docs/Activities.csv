@@ -660,7 +660,7 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-08-14 17:01,,Lait exprimé,,25,,27
 2024-08-14 17:30,,Pipi,,,,27
 2024-08-14 17:44,2024-08-14 17:49,Allaitement,Novice,,5m 1s,27
-2024-08-14 18:18,2024-08-14 18:18,Allaitement,Novice,,2s,27
+2024-08-14 18:18,2024-08-14 18:24,Allaitement,Novice,,6m 15s,27
 2024-08-14 20:15,2024-08-14 20:31,Allaitement,Average,,16m 11s,27
 2024-08-14 20:25,,Pipi,,,,27
 2024-08-14 23:25,,Pipi,,,,27
@@ -676,4 +676,21 @@ Time1,Time2,Activities,QualityBF,Quantity (ml),Duration,DaysSinceBirth
 2024-08-15 12:56,2024-08-15 13:26,Allaitement,Pro,,30m 11s,28
 2024-08-15 13:35,,Lait exprimé,,30,,28
 2024-08-15 14:09,,Pipi,,,,28
-2024-08-15 14:25,2024-08-15 14:30,Allaitement,Pro,,5m 1s,28
+2024-08-15 14:25,2024-08-15 14:30,Pipi,Pro,,5m 1s,28
+2024-08-15 15:53,2024-08-15 16:23,Allaitement,Average,,30m 4s,28
+2024-08-15 16:23,2024-08-15 16:43,Allaitement,Pro,,20m 1s,28
+2024-08-15 17:09,,Selles,,,,28
+2024-08-15 18:24,2024-08-15 18:50,Allaitement,Average,,25m 31s,28
+2024-08-15 20:35,2024-08-15 20:49,Allaitement,Novice,,14m 12s,28
+2024-08-15 21:18,2024-08-15 21:31,Allaitement,Pro,,12m 45s,28
+2024-08-15 21:49,2024-08-15 21:54,Allaitement,Average,,5m 6s,28
+2024-08-16 1:43,2024-08-16 2:05,Allaitement,Average,,21m 41s,29
+2024-08-16 2:12,,Pipi,,,,29
+2024-08-16 2:12,,Lait exprimé,,30,,29
+2024-08-16 5:17,2024-08-16 5:33,Allaitement,Novice,,16m 19s,29
+2024-08-16 5:44,,Pipi,,,,29
+2024-08-16 5:50,2024-08-16 5:54,Allaitement,Novice,,4m 33s,29
+2024-08-16 6:54,2024-08-16 7:28,Allaitement,Average,,33m 41s,29
+2024-08-16 8:55,2024-08-16 9:24,Allaitement,Average,,29m 13s,29
+2024-08-16 9:52,,Pipi,,,,29
+2024-08-16 9:30,,Lait exprimé,,30,,29
