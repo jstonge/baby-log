@@ -172,7 +172,6 @@ function activityChart(data, { width }) {
     height: 800,
     x: {grid: true},
     facet: {padding: 50},
-    // axis: null,
     y: {insetTop: 10},
     fx: {padding: 0.03},
     color: {
