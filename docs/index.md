@@ -51,6 +51,7 @@ SELECT MAX(DaysSinceBirth) as Days FROM data
         marginBottom: 40,
         marks: [
             Plot.frame(), 
+            Plot.axisX({ticks: "day"}),
             Plot.rectY(raw_data, Plot.binX({y: "count"}, {
               x: d => formatTime(d.Time1), fill: "midnightblue", thresholds: 120
               })),
